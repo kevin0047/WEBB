@@ -1,0 +1,97 @@
+﻿@using System.ComponentModel.DataAnnotations
+@inject IJSRuntime JSRuntime
+
+<h2>문의하기</h2>
+
+<EditForm Model="@contactForm" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="name">이름:</label>
+        <InputText id="name" class="form-control" @bind-Value="contactForm.Name" />
+        <ValidationMessage For="@(() => contactForm.Name)" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">이메일:</label>
+        <InputText id="email" class="form-control" @bind-Value="contactForm.Email" />
+        <ValidationMessage For="@(() => contactForm.Email)" />
+    </div>
+
+    <div class="form-group">
+        <label for="subject">제목:</label>
+        <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" />
+        <ValidationMessage For="@(() => contactForm.Subject)" />
+    </div>
+
+    <div class="form-group">
+        <label for="message">메시지:</label>
+        <InputTextArea id="message" class="form-control" @bind-Value="contactForm.Message" rows="5" />
+        <ValidationMessage For="@(() => contactForm.Message)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">보내기</button>
+</EditForm>
+
+@code {
+    private ContactFormModel contactForm = new ContactFormModel();
+
+    private class ContactFormModel
+    {
+        [Required(ErrorMessage = "이름을 입력해주세요.")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "이메일을 입력해주세요.")]
+        [EmailAddress(ErrorMessage = "유효한 이메일 주소를 입력해주세요.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "제목을 입력해주세요.")]
+        public string Subject { get; set; }
+
+        [Required(ErrorMessage = "메시지를 입력해주세요.")]
+        public string Message { get; set; }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        // 여기에 폼 제출 로직을 구현합니다 (예: 이메일 전송, 데이터베이스 저장 등)
+        await JSRuntime.InvokeVoidAsync("alert", "문의가 성공적으로 전송되었습니다. 감사합니다!");
+        contactForm = new ContactFormModel(); // 폼 초기화
+    }
+}
+
+<style>
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+</style>

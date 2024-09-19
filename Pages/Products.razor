@@ -1,0 +1,181 @@
+﻿@page "/products"
+
+<h1>제품 및 서비스</h1>
+
+<div class="product-filter">
+    <label for="category-select">카테고리 선택:</label>
+    <select id="category-select" @bind="selectedCategory">
+        <option value="">모든 카테고리</option>
+        @foreach (var category in categories)
+        {
+                <option value="@category">@category</option>
+        }
+    </select>
+</div>
+
+<div class="product-grid">
+    @foreach (var product in FilteredProducts)
+    {
+            <div class="product-card">
+                <img src="@product.ImageUrl" alt="@product.Name" class="product-image" />
+                <h3>@product.Name</h3>
+                <p>@product.ShortDescription</p>
+                <p class="price">가격: @product.Price.ToString("C")</p>
+                <button class="details-button" @onclick="() => ShowProductDetails(product)">자세히 보기</button>
+            </div>
+    }
+</div>
+
+@if (selectedProduct != null)
+{
+        <div class="product-details-modal">
+            <div class="modal-content">
+                <h2>@selectedProduct.Name</h2>
+                <img src="@selectedProduct.ImageUrl" alt="@selectedProduct.Name" class="product-image-large" />
+                <p>@selectedProduct.LongDescription</p>
+                <p class="price">가격: @selectedProduct.Price.ToString("C")</p>
+                <h3>주요 특징:</h3>
+                <ul>
+                @foreach (var feature in selectedProduct.Features)
+                {
+                            <li>@feature</li>
+                }
+                </ul>
+                <button class="close-button" @onclick="CloseProductDetails">닫기</button>
+            </div>
+        </div>
+}
+
+@code {
+    private List<string> categories = new List<string> { "소프트웨어", "하드웨어", "서비스" };
+    private string selectedCategory = "";
+    private Product selectedProduct;
+
+    private List<Product> products = new List<Product>
+    {
+        new Product
+        {
+            Name = "클라우드 솔루션",
+            Category = "서비스",
+            ShortDescription = "안전하고 확장 가능한 클라우드 호스팅",
+            LongDescription = "우리의 클라우드 솔루션은 기업의 디지털 인프라를 안전하고 효율적으로 관리합니다. 높은 가용성, 탄력적인 확장성, 그리고 강력한 보안을 제공합니다.",
+            Price = 1000000,
+            ImageUrl = "/images/cloud-solution.jpg",
+            Features = new List<string> { "99.9% 가동 시간 보장", "실시간 백업", "24/7 기술 지원" }
+        },
+        new Product
+        {
+            Name = "데이터 분석 소프트웨어",
+            Category = "소프트웨어",
+            ShortDescription = "빅데이터를 통찰력 있는 정보로 변환",
+            LongDescription = "우리의 데이터 분석 소프트웨어는 복잡한 데이터를 쉽게 이해할 수 있는 시각적 정보로 변환합니다. 머신러닝 알고리즘을 활용하여 예측 분석도 가능합니다.",
+            Price = 500000,
+            ImageUrl = "/images/data-analysis.jpg",
+            Features = new List<string> { "실시간 데이터 처리", "커스터마이즈 가능한 대시보드", "고급 예측 모델링" }
+        },
+        // 필요에 따라 더 많은 제품 추가
+    };
+
+    private List<Product> FilteredProducts =>
+        string.IsNullOrEmpty(selectedCategory)
+            ? products
+            : products.Where(p => p.Category == selectedCategory).ToList();
+
+    private void ShowProductDetails(Product product)
+    {
+        selectedProduct = product;
+    }
+
+    private void CloseProductDetails()
+    {
+        selectedProduct = null;
+    }
+
+    private class Product
+    {
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string ShortDescription { get; set; }
+        public string LongDescription { get; set; }
+        public decimal Price { get; set; }
+        public string ImageUrl { get; set; }
+        public List<string> Features { get; set; }
+    }
+}
+
+<style>
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .product-image-large {
+        width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .details-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .product-details-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+
+    .close-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .product-filter {
+        margin-bottom: 1rem;
+    }
+</style>

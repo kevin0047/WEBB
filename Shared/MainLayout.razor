@@ -1,0 +1,97 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="main-layout">
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="@NavigationManager.ToAbsoluteUri("").ToString()" class="navbar-item">
+                    <img src="/images/logo.png" alt="회사 로고" class="logo">
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("").ToString()" Match="NavLinkMatch.All">
+                    홈
+                </NavLink>
+                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()">
+                    회사 소개
+                </NavLink>
+                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("products").ToString()">
+                    제품/서비스
+                </NavLink>
+                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("careers").ToString()">
+                    채용정보
+                </NavLink>
+                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("contact").ToString()">
+                    문의하기
+                </NavLink>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        @Body
+    </main>
+
+    <Footer />
+</div>
+
+<style>
+    .main-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .logo {
+        height: 40px;
+        width: auto;
+    }
+
+    .navbar-menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav-link {
+        color: #333;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        color: #007bff;
+    }
+
+    .content {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    @("@media (max-width: 768px) {")
+        .navbar-menu {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .nav-link {
+            margin: 0.5rem 0;
+        }
+    }
+</style>

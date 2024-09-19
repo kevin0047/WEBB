@@ -1,0 +1,129 @@
+﻿@page "/"
+
+<div class="hero-section">
+    <h1>[회사명]에 오신 것을 환영합니다</h1>
+    <p class="tagline">[회사의 핵심 가치 또는 슬로건]</p>
+    <a href="/about" class="cta-button">회사 소개</a>
+</div>
+
+<section class="features">
+    <h2>우리의 강점</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <i class="feature-icon">아이콘1</i>
+            <h3>[특징 1]</h3>
+            <p>[특징 1에 대한 간단한 설명]</p>
+        </div>
+        <div class="feature-item">
+            <i class="feature-icon">아이콘2</i>
+            <h3>[특징 2]</h3>
+            <p>[특징 2에 대한 간단한 설명]</p>
+        </div>
+        <div class="feature-item">
+            <i class="feature-icon">아이콘3</i>
+            <h3>[특징 3]</h3>
+            <p>[특징 3에 대한 간단한 설명]</p>
+        </div>
+    </div>
+</section>
+
+<section class="latest-news">
+    <h2>최신 소식</h2>
+    @foreach (var news in LatestNews)
+    {
+            <div class="news-item">
+                <h3>@news.Title</h3>
+                <p>@news.Summary</p>
+                <a href="@news.Url">자세히 보기</a>
+            </div>
+    }
+</section>
+
+<section class="testimonials">
+    <h2>고객 후기</h2>
+    <div class="testimonial-carousel">
+        @foreach (var testimonial in Testimonials)
+        {
+                <div class="testimonial-item">
+                    <p>"@testimonial.Quote"</p>
+                    - @testimonial.Author, @testimonial.Company
+                </div>
+        }
+    </div>
+</section>
+
+<section class="call-to-action">
+    <h2>지금 바로 시작하세요</h2>
+    <p>우리와 함께 귀하의 비즈니스를 성장시키세요.</p>
+    <a href="/contact" class="cta-button">문의하기</a>
+</section>
+
+@code {
+    private List<NewsItem> LatestNews = new List<NewsItem>
+    {
+        new NewsItem { Title = "신제품 출시", Summary = "혁신적인 신제품을 소개합니다.", Url = "/news/1" },
+        new NewsItem { Title = "연간 보고서 발표", Summary = "지난 해의 성과를 공유합니다.", Url = "/news/2" },
+        // 추가 뉴스 아이템...
+    };
+
+    private List<Testimonial> Testimonials = new List<Testimonial>
+    {
+        new Testimonial { Quote = "최고의 서비스를 경험했습니다.", Author = "김철수", Company = "A 기업" },
+        new Testimonial { Quote = "획기적인 솔루션 덕분에 생산성이 크게 향상되었습니다.", Author = "이영희", Company = "B 기업" },
+        // 추가 후기...
+    };
+
+    private class NewsItem
+    {
+        public string Title { get; set; }
+        public string Summary { get; set; }
+        public string Url { get; set; }
+    }
+
+    private class Testimonial
+    {
+        public string Quote { get; set; }
+        public string Author { get; set; }
+        public string Company { get; set; }
+    }
+}
+
+<style>
+    .hero-section {
+        text-align: center;
+        padding: 4rem 0;
+        background-color: #f8f9fa;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+    }
+
+    .feature-grid {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+
+    .feature-item {
+        flex: 1;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .news-item, .testimonial-item {
+        margin-bottom: 1rem;
+    }
+
+    .call-to-action {
+        text-align: center;
+        padding: 3rem 0;
+        background-color: #f8f9fa;
+    }
+</style>
