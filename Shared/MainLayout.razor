@@ -1,87 +1,94 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
-
 <div class="main-layout">
     <header>
         <nav class="navbar">
-            <div class="navbar-brand">
-                <a href="@NavigationManager.ToAbsoluteUri("").ToString()" class="navbar-item">
-                    <img src="/images/logo.png" alt="회사 로고" class="logo">
-                </a>
-            </div>
-            <div class="navbar-menu">
-                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("").ToString()" Match="NavLinkMatch.All">
-                    홈
-                </NavLink>
-                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()">
-                    회사 소개
-                </NavLink>
-                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("products").ToString()">
-                    서비스
-                </NavLink>
-                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("careers").ToString()">
-                    채용정보
-                </NavLink>
-                <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("contact").ToString()">
-                    문의하기
-                </NavLink>
+            <div class="navbar-container">
+                <div class="navbar-brand">
+                    <a href="@NavigationManager.ToAbsoluteUri("").ToString()" class="navbar-item">
+                        <img src="/images/logo.png" alt="회사 로고" class="logo">
+                    </a>
+                </div>
+                <div class="navbar-menu">
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()">
+                        System Integration
+                    </NavLink>
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("products").ToString()">
+                        Components
+                    </NavLink>
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()">
+                        About
+                    </NavLink>
+                </div>
             </div>
         </nav>
     </header>
-
     <main class="content">
         @Body
     </main>
-
     <Footer />
 </div>
-
 <style>
     .main-layout {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
     }
-
     .navbar {
-        background-color: #f8f9fa;
-        padding: 0.5rem 1rem; /* 상하 패딩을 줄임 */
+        background-color: #ffffff;
+        padding: 0; 
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        display: flex; /* Flexbox 레이아웃 사용 */
-        align-items: center; /* 수직 중앙 정렬 */
-        justify-content: space-between; /* 로고와 메뉴 사이 공간 분배 */
+        width: 100%; 
+        margin: 0; 
     }
-
-   .navbar-brand {
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.4rem 2rem; 
+        width: 100%;
+    }
+    .navbar-brand {
         font-size: 1.5rem;
         font-weight: bold;
-        display: flex; /* Flexbox 레이아웃 사용 */
-        align-items: center; /* 수직 중앙 정렬 */
-    }
-
-   .logo {
-        height: 40px;
-        width: auto;
-        margin-right: 1rem; /* 로고와 텍스트 사이 간격 */
-    }
-
-    .navbar-menu {
         display: flex;
-
         align-items: center;
     }
-
+    .logo {
+        height: 20px; 
+        width: auto;
+        margin-right: 1rem;
+    }
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+    }
     .nav-link {
         color: #333;
         text-decoration: none;
         padding: 0.5rem 1rem;
         margin: 0 0.5rem;
+        position: relative;
     }
-
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -6px;
+        left: 50%;
+        background-color: #007bff;
+        transition: all 0.3s ease-in-out;
+    }
     .nav-link:hover, .nav-link.active {
         color: #007bff;
     }
-
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 100%;
+        left: 0;
+    }
     .content {
         flex: 1;
         padding: 2rem;
@@ -89,15 +96,23 @@
         margin: 0 auto;
         width: 100%;
     }
-
     @("@media (max-width: 768px) {")
+        .navbar-container {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1rem;
+        }
         .navbar-menu {
             flex-direction: column;
             align-items: flex-start;
+            width: 100%;
+            margin-top: 1rem;
         }
-
         .nav-link {
             margin: 0.5rem 0;
+        }
+        .nav-link::after {
+            bottom: -8px;
         }
     }
 </style>
