@@ -11,7 +11,7 @@ body, html {
     padding: 0;
     background-color: transparent;
     position: relative;
-    height: calc(100vh - 60px); /* 네비바 높이를 뺀 값으로 설정 (네비바 높이에 따라 조정 필요) */
+    height: calc(100vh - 60px); 
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -43,6 +43,7 @@ body, html {
 .hero-section h1 {
     font-size: 3.5rem;
     color: white;
+    margin-top: 15rem;
     margin-bottom: 1rem;
 }
 
@@ -94,6 +95,116 @@ body, html {
     padding: 3rem 0;
     background-color: #f8f9fa;
 }
+
+
+
+
+
+
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto;
+    overflow: hidden;
+    height: 400px; /* 배너의 높이 설정 */
+}
+
+.banner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.banner-slide {
+    flex: 0 0 100%;
+    display: flex;
+    height: 100%;
+}
+
+.banner-image {
+    flex: 0 60%;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-content {
+    flex: 0 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8f8f8;
+}
+
+    .banner-content h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .banner-content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+.banner-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+    .banner-button:hover {
+        background-color: #0056b3;
+    }
+
+.banner-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+    .banner-btn.prev {
+        left: 10px;
+    }
+
+    .banner-btn.next {
+        right: 10px;
+    }
+
+.banner-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.banner-dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+    .banner-dot.active {
+        background: white;
+    }
+
+
+
+
 
 @media (max-width: 768px) {
     .hero-section h1 {

@@ -1,0 +1,98 @@
+﻿@inject IJSRuntime JSRuntime
+
+<div class="banner-container">
+    <div class="banner" style="transform: translateX(-@(CurrentSlide * 100)%)">
+        @foreach (var slide in Slides)
+        {
+                <div class="banner-slide">
+                    <div class="banner-image" style="background-image: url('@slide.ImageUrl')"></div>
+                    <div class="banner-content">
+                        <h2>@slide.Title</h2>
+                        <p>@slide.Description</p>
+                        <a href="@slide.ButtonLink" class="banner-button">상세보기</a>
+                    </div>
+                </div>
+        }
+    </div>
+    <button class="banner-btn prev" @onclick="PrevSlide">&lt;</button>
+    <button class="banner-btn next" @onclick="NextSlide">&gt;</button>
+    <div class="banner-dots">
+        @for (int i = 0; i < Slides.Count; i++)
+        {
+            var index = i;
+                <div class="banner-dot @(i == CurrentSlide ? "active" : "")" @onclick="() => GoToSlide(index)"></div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<BannerSlide> Slides = new List<BannerSlide>
+    {
+        new BannerSlide
+        {
+            ImageUrl = "/images/banner1.png",
+            Title = "첨단 센서 기술",
+            Description = "최신 기술을 활용한 스마트 센서 솔루션을 제공합니다.",
+            ButtonLink = "/products/sensors"
+        },
+        new BannerSlide
+        {
+            ImageUrl = "/images/banner2.png",
+            Title = "AI 기반 검사 시스템",
+            Description = "인공지능을 활용한 고정밀 검사 시스템으로 품질을 혁신합니다.",
+            ButtonLink = "/solutions/ai-inspection"
+        },
+        new BannerSlide
+        {
+            ImageUrl = "/images/banner3.png",
+            Title = "산업용 IoT 솔루션",
+            Description = "연결된 스마트 팩토리를 위한 IoT 솔루션을 제공합니다.",
+            ButtonLink = "/solutions/industrial-iot"
+        }
+    };
+
+    private int CurrentSlide { get; set; } = 0;
+    private Timer AutoSlideTimer;
+
+    protected override void OnInitialized()
+    {
+        AutoSlideTimer = new Timer(AutoSlide, null, 5000, 5000);
+    }
+
+    private void AutoSlide(object state)
+    {
+        InvokeAsync(() =>
+        {
+            NextSlide();
+            StateHasChanged();
+        });
+    }
+
+    private void NextSlide()
+    {
+        CurrentSlide = (CurrentSlide + 1) % Slides.Count;
+    }
+
+    private void PrevSlide()
+    {
+        CurrentSlide = (CurrentSlide - 1 + Slides.Count) % Slides.Count;
+    }
+
+    private void GoToSlide(int index)
+    {
+        CurrentSlide = index;
+    }
+
+    public void Dispose()
+    {
+        AutoSlideTimer?.Dispose();
+    }
+
+    private class BannerSlide
+    {
+        public string ImageUrl { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ButtonLink { get; set; }
+    }
+}
