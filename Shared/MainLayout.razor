@@ -17,7 +17,7 @@
                     회사 소개
                 </NavLink>
                 <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("products").ToString()">
-                    제품/서비스
+                    서비스
                 </NavLink>
                 <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("careers").ToString()">
                     채용정보
@@ -45,23 +45,29 @@
 
     .navbar {
         background-color: #f8f9fa;
-        padding: 1rem;
+        padding: 0.5rem 1rem; /* 상하 패딩을 줄임 */
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: flex; /* Flexbox 레이아웃 사용 */
+        align-items: center; /* 수직 중앙 정렬 */
+        justify-content: space-between; /* 로고와 메뉴 사이 공간 분배 */
     }
 
-    .navbar-brand {
+   .navbar-brand {
         font-size: 1.5rem;
         font-weight: bold;
+        display: flex; /* Flexbox 레이아웃 사용 */
+        align-items: center; /* 수직 중앙 정렬 */
     }
 
-    .logo {
+   .logo {
         height: 40px;
         width: auto;
+        margin-right: 1rem; /* 로고와 텍스트 사이 간격 */
     }
 
     .navbar-menu {
         display: flex;
-        justify-content: flex-end;
+
         align-items: center;
     }
 

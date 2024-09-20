@@ -1,28 +1,33 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Components.Web
+<PageTitle>DEVLINK Home</PageTitle>
 
+<HeadContent>
+    <link href="css/pages/index.css" rel="stylesheet" />
+</HeadContent>
 <div class="hero-section">
-    <h1>[회사명]에 오신 것을 환영합니다</h1>
-    <p class="tagline">[회사의 핵심 가치 또는 슬로건]</p>
+    <h1>DEVLINK에 오신 것을 환영합니다</h1>
+    <p class="tagline">데브링크는 ​머신비전과 딥러닝 기술으로 ​산업 현장의 미래를 선도합니다. ​</p>
     <a href="/about" class="cta-button">회사 소개</a>
 </div>
 
 <section class="features">
-    <h2>우리의 강점</h2>
+    <h2>DEVLINK의 강점</h2>
     <div class="feature-grid">
         <div class="feature-item">
-            <i class="feature-icon">아이콘1</i>
-            <h3>[특징 1]</h3>
-            <p>[특징 1에 대한 간단한 설명]</p>
+            <img src="/images/deep-learning-icon.png" alt="Deep Learning Icon" class="feature-icon">
+            <h3>Deep Learning ​비전 검사 솔루션</h3>
+            <p>AI를 활용한 Deep Learning 검사 솔루션을 고객사의 상황에 맞게 제공해드립니다. ​</p>
         </div>
         <div class="feature-item">
-            <i class="feature-icon">아이콘2</i>
-            <h3>[특징 2]</h3>
-            <p>[특징 2에 대한 간단한 설명]</p>
+            <img src="/images/3D-2D-inspection-icon.png" alt="3D, 2D Inspection Icon" class="feature-icon">
+            <h3>3D, 2D 검사 시스템​</h3>
+            <p>비파괴검사, 외형검사 등의 검사 시스템을 개발 / 납품합니다.​</p>
         </div>
         <div class="feature-item">
-            <i class="feature-icon">아이콘3</i>
-            <h3>[특징 3]</h3>
-            <p>[특징 3에 대한 간단한 설명]</p>
+            <img src="/images/distribution-icon.png" alt="Distribution Icon" class="feature-icon">
+            <h3>유통</h3>
+            <p>머신 비전 / 공장자동화에 필요한 컴포넌트, 센서, PC, 서버, 스토리지를 유통 / 판매합니다.​</p>
         </div>
     </div>
 </section>
@@ -88,42 +93,3 @@
     }
 }
 
-<style>
-    .hero-section {
-        text-align: center;
-        padding: 4rem 0;
-        background-color: #f8f9fa;
-    }
-
-    .cta-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-top: 1rem;
-    }
-
-    .feature-grid {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-    }
-
-    .feature-item {
-        flex: 1;
-        padding: 1rem;
-        text-align: center;
-    }
-
-    .news-item, .testimonial-item {
-        margin-bottom: 1rem;
-    }
-
-    .call-to-action {
-        text-align: center;
-        padding: 3rem 0;
-        background-color: #f8f9fa;
-    }
-</style>

@@ -1,0 +1,55 @@
+﻿.hero-section {
+    text-align: center;
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.feature-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .feature-item .feature-icon {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+    }
+
+.news-item, .testimonial-item {
+    margin-bottom: 1rem;
+}
+
+.call-to-action {
+    text-align: center;
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+@media (max-width: 768px) {
+    .feature-item .feature-icon,
+    .feature-item .feature-icon.font-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 60px;
+    }
+}
