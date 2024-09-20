@@ -11,6 +11,7 @@
     <Content Remove="wwwroot\images\deep-learning-icon.png" />
     <Content Remove="wwwroot\images\distribution-icon.png" />
     <Content Remove="wwwroot\images\footer-logo.png" />
+    <Content Remove="wwwroot\images\home-background.png" />
     <Content Remove="wwwroot\images\logo.png" />
   </ItemGroup>
 
@@ -23,9 +24,18 @@
     <Resource Include="wwwroot\images\footer-logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="wwwroot\images\home-background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="wwwroot\images\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\css\pages\index.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 <div class="navbar-menu">
-                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()">
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("contact").ToString()">
                         System Integration
                     </NavLink>
                     <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("products").ToString()">
@@ -35,6 +35,9 @@
         min-height: 100vh;
     }
     .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         background-color: #ffffff;
         padding: 0; 
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -71,6 +74,7 @@
         padding: 0.5rem 1rem;
         margin: 0 0.5rem;
         position: relative;
+        transition: color 0.3s ease-in-out;
     }
     .nav-link::after {
         content: '';
@@ -82,16 +86,24 @@
         background-color: #007bff;
         transition: all 0.3s ease-in-out;
     }
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover {
         color: #007bff;
     }
-    .nav-link:hover::after, .nav-link.active::after {
+    .nav-link:hover::after {
         width: 100%;
         left: 0;
     }
+    .nav-link.active {
+        color: #007bff;
+    }
+    .nav-link.active::after {
+        width: 100%;
+        left: 0;
+        background-color: #007bff;
+    }
     .content {
         flex: 1;
-        padding: 2rem;
+        padding: 0rem;
         max-width: 1200px;
         margin: 0 auto;
         width: 100%;
