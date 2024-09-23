@@ -13,85 +13,76 @@
         <Banner />
     </div>
 </div>
-<section class="features">
-    <h2>DEVLINK의 강점</h2>
-    <div class="feature-grid">
-        <div class="feature-item">
-             
-            <h3>Deep Learning ​비전 검사 솔루션</h3>
-            <p>AI를 활용한 Deep Learning 검사 솔루션을 고객사의 상황에 맞게 제공해드립니다. ​</p>
-        </div>
-        <div class="feature-item">
-            <img src="/images/3D-2D-inspection-icon.png" alt="3D, 2D Inspection Icon" class="feature-icon">
-            <h3>3D, 2D 검사 시스템​</h3>
-            <p>비파괴검사, 외형검사 등의 검사 시스템을 개발 / 납품합니다.​</p>
-        </div>
-        <div class="feature-item">
-            <img src="/images/distribution-icon.png" alt="Distribution Icon" class="feature-icon">
-            <h3>유통</h3>
-            <p>머신 비전 / 공장자동화에 필요한 컴포넌트, 센서, PC, 서버, 스토리지를 유통 / 판매합니다.​</p>
-        </div>
-    </div>
-</section>
+<div class="white-section">
 
-<section class="latest-news">
-    <h2>최신 소식</h2>
-    @foreach (var news in LatestNews)
-    {
-            <div class="news-item">
-                <h3>@news.Title</h3>
-                <p>@news.Summary</p>
-                <a href="@news.Url">자세히 보기</a>
-            </div>
-    }
-</section>
-
-<section class="testimonials">
-    <h2>고객 후기</h2>
-    <div class="testimonial-carousel">
-        @foreach (var testimonial in Testimonials)
-        {
-                <div class="testimonial-item">
-                    <p>"@testimonial.Quote"</p>
-                    - @testimonial.Author, @testimonial.Company
+</div>
+<div class="blue-section">
+    <div class="container">
+        <div class="section-container">
+            <div class="section si-section">
+                <div class="section-header">
+                    <h2>S/I</h2>
+                    <button class="more-btn">More &gt;</button>
                 </div>
-        }
+                <div class="section-content">
+                    <div class="button-group">
+                        <button class="content-btn">Machine Vision</button>
+                        <button class="content-btn">Automatic Control</button>
+                    </div>
+                    <div class="content-images">
+                        <div class="content-item">
+                            <img src="/images/movie1.png" alt="Content 1">
+                            <h3>이미지 제목 1</h3>
+                            <p>이미지 내용 1</p>
+                        </div>
+                        <div class="content-item">
+                            <img src="/images/movie2.png" alt="Content 2">
+                            <h3>이미지 제목 2</h3>
+                            <p>이미지 내용 2</p>
+                        </div>
+                        <div class="content-item">
+                            <img src="/images/movie3.png" alt="Content 3">
+                            <h3>이미지 제목 3</h3>
+                            <p>이미지 내용 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section components-section">
+                <div class="section-header">
+                    <h2>Components</h2>
+                    <button class="more-btn">More &gt;</button>
+                </div>
+                <div class="section-content">
+                    <div class="button-group">
+                        <button class="content-btn">Machine Vision</button>
+                        <button class="content-btn">Sensors</button>
+                    </div>
+                    <div class="content-images">
+                        <div class="content-item">
+                            <img src="/images/content1.jpg" alt="Content 1">
+                            <h3>이미지 제목 1</h3>
+                            <p>이미지 내용 1</p>
+                        </div>
+                        <div class="content-item">
+                            <img src="/images/content2.jpg" alt="Content 2">
+                            <h3>이미지 제목 2</h3>
+                            <p>이미지 내용 2</p>
+                        </div>
+                        <div class="content-item">
+                            <img src="/images/content3.jpg" alt="Content 3">
+                            <h3>이미지 제목 3</h3>
+                            <p>이미지 내용 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+</div>
 
-<section class="call-to-action">
-    <h2>지금 바로 시작하세요</h2>
-    <p>우리와 함께 귀하의 비즈니스를 성장시키세요.</p>
-    <a href="/contact" class="cta-button">문의하기</a>
-</section>
 
 @code {
-    private List<NewsItem> LatestNews = new List<NewsItem>
-    {
-        new NewsItem { Title = "신제품 출시", Summary = "혁신적인 신제품을 소개합니다.", Url = "/news/1" },
-        new NewsItem { Title = "연간 보고서 발표", Summary = "지난 해의 성과를 공유합니다.", Url = "/news/2" },
-        // 추가 뉴스 아이템...
-    };
-
-    private List<Testimonial> Testimonials = new List<Testimonial>
-    {
-        new Testimonial { Quote = "최고의 서비스를 경험했습니다.", Author = "김철수", Company = "A 기업" },
-        new Testimonial { Quote = "획기적인 솔루션 덕분에 생산성이 크게 향상되었습니다.", Author = "이영희", Company = "B 기업" },
-        // 추가 후기...
-    };
-
-    private class NewsItem
-    {
-        public string Title { get; set; }
-        public string Summary { get; set; }
-        public string Url { get; set; }
-    }
-
-    private class Testimonial
-    {
-        public string Quote { get; set; }
-        public string Author { get; set; }
-        public string Company { get; set; }
-    }
+  
 }
 

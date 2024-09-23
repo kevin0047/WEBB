@@ -1,21 +1,26 @@
 ﻿@inject IJSRuntime JSRuntime
+@using Microsoft.AspNetCore.Components
 
-<div class="banner-container">
-    <div class="banner" style="transform: translateX(-@(CurrentSlide * 100)%)">
-        @foreach (var slide in Slides)
-        {
-                <div class="banner-slide">
-                    <div class="banner-image" style="background-image: url('@slide.ImageUrl')"></div>
-                    <div class="banner-content">
-                        <h2>@slide.Title</h2>
-                        <p>@slide.Description</p>
-                        <a href="@slide.ButtonLink" class="banner-button">상세보기</a>
+<div class="banner-wrapper">
+    <div class="banner-container">
+        <div class="banner" style="transform: translateX(-@(CurrentSlide * 100)%)">
+            @foreach (var slide in Slides)
+            {
+                    <div class="banner-slide">
+                        <div class="banner-image" style="background-image: url('@slide.ImageUrl')"></div>
+                        <div class="banner-content">
+                            <h2>@((MarkupString)slide.Title)</h2>
+                            <p>@((MarkupString)slide.Description)</p>
+                                    <a href="@slide.ButtonLink" class="banner-button"> 
+                                        More information <span class="arrow">→</span>
+                                        </a>
+                        </div>
                     </div>
-                </div>
-        }
+            }
+        </div>
     </div>
-    <button class="banner-btn prev" @onclick="PrevSlide">&lt;</button>
-    <button class="banner-btn next" @onclick="NextSlide">&gt;</button>
+    <button class="banner-btn prev" @onclick="PrevSlide">&#10094;</button>
+    <button class="banner-btn next" @onclick="NextSlide">&#10095;</button>
     <div class="banner-dots">
         @for (int i = 0; i < Slides.Count; i++)
         {
@@ -24,15 +29,14 @@
         }
     </div>
 </div>
-
 @code {
     private List<BannerSlide> Slides = new List<BannerSlide>
     {
         new BannerSlide
         {
             ImageUrl = "/images/banner1.png",
-            Title = "첨단 센서 기술",
-            Description = "최신 기술을 활용한 스마트 센서 솔루션을 제공합니다.",
+            Title = "화이버 센서와<br>앰프",
+            Description = "고출력을 기반으로 자동 감도 추적기능을 이용하여 손쉽고<br>빠르게 정할 수 있습니다.",
             ButtonLink = "/products/sensors"
         },
         new BannerSlide

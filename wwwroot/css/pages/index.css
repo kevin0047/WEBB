@@ -5,32 +5,24 @@ body, html {
     padding: 0;
     overflow-x: hidden;
 }
-
+/* 홈 배경 이미지 */
 .hero-section {
     text-align: center;
     padding: 0;
     background-color: transparent;
     position: relative;
-    height: calc(100vh - 60px); 
+    height: calc(100vh - 200px);
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url('/images/home-background.png');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
 }
 
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+/* */
 
 .hero-content {
     position: relative;
@@ -39,76 +31,145 @@ body, html {
     padding: 0 20px;
     box-sizing: border-box;
 }
-
+/* Smart Sensor Technologies 메인 문구 */
 .hero-section h1 {
-    font-size: 3.5rem;
+    font-size: 2rem;
     color: white;
-    margin-top: 15rem;
-    margin-bottom: 1rem;
+    margin-top: 27rem;
+    margin-bottom: 7rem;
 }
 
-.hero-section .tagline {
-    font-size: 1.5rem;
-    color: white;
-    margin-bottom: 2rem;
+/* 배너 용 여백 */
+.white-section {
+    background-color: white;
+    padding: 200px 0;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    font-size: 1.1rem;
+
+
+
+
+
+
+
+
+
+/* 연한 푸른색 영역 */
+.blue-section {
+    background-color: #e6f2ff;
+    padding: 50px 0;
 }
 
-.feature-grid {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.feature-item {
-    flex: 1;
-    padding: 1rem;
-    text-align: center;
+.section-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 40px;
 }
 
-    .feature-item .feature-icon {
-        width: 80px;
-        height: 80px;
-        object-fit: contain;
-        margin-bottom: 1rem;
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .section-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
     }
 
-.news-item, .testimonial-item {
-    margin-bottom: 1rem;
+.more-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.call-to-action {
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.content-btn {
+    background: none;
+    border: 2px solid #888;
+    color: #888;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .content-btn:hover {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+    }
+
+.content-images {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.content-item {
+    flex: 0 0 auto;
+    width: 200px;
     text-align: center;
-    padding: 3rem 0;
-    background-color: #f8f9fa;
 }
 
+    .content-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .content-item h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .content-item p {
+        font-size: 14px;
+        color: #666;
+    }
 
 
 
 
+
+
+
+
+
+
+/* 배너 */
+.banner-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 20px auto;
+}
 
 
 .banner-container {
     position: relative;
     width: 100%;
     max-width: 1100px;
-    margin: 20px auto;
+    margin: 0 auto;
     overflow: hidden;
-    height: 400px; /* 배너의 높이 설정 */
+    height: 350px; 
 }
 
 .banner {
@@ -135,73 +196,99 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f8f8f8;
+    align-items: flex-start;
+    background-color: white;
 }
 
     .banner-content h2 {
         font-size: 24px;
         margin-bottom: 10px;
+        text-align: left; 
     }
 
     .banner-content p {
         font-size: 16px;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
+        text-align: left; 
     }
-
+    /*배너 안 바로가기 버튼*/
 .banner-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: white;
+    color: #007bff;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border: 2px solid #007bff;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-weight: bold;
 }
 
     .banner-button:hover {
-        background-color: #0056b3;
+        background-color: #007bff;
+        color: white;
     }
 
+    .banner-button .arrow {
+        margin-left: 8px; 
+        font-size: 1.1em; 
+        transition: transform 0.3s;
+    }
+
+    .banner-button:hover .arrow {
+        transform: translateX(3px); 
+    }
+    /*배너 양끝 화살표 버튼*/
 .banner-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: none;
+    color: #888;
     border: none;
-    padding: 10px 15px;
+    font-size: 40px;
     cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+    z-index: 10;
 }
 
+    .banner-btn:hover {
+        color: #333;
+    }
+
     .banner-btn.prev {
-        left: 10px;
+        left: 0;
     }
 
     .banner-btn.next {
-        right: 10px;
+        right: 0;
     }
 
 .banner-dots {
-    position: absolute;
-    bottom: 10px;
+    position: relative;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    justify-content: center;
+    margin-top: 10px; 
 }
 
 .banner-dot {
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.3); 
     border-radius: 50%;
     margin: 0 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
     .banner-dot.active {
-        background: white;
+        background: #007bff;
     }
-
 
 
 
