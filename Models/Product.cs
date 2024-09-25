@@ -1,23 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace WEBB.Models
+﻿namespace WEBB.Models
 {
     public class Product
     {
         public int Id { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        [Required]
-        public string ShortDescription { get; set; }
-
-        [Required]
-        [Range(0, double.MaxValue, ErrorMessage = "가격은 0 이상이어야 합니다.")]
-        public decimal Price { get; set; }
-
-        [Required]
-        [Url]
         public string ImageUrl { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+        public string ShortContent
+        {
+            get
+            {
+                if (Content.Length <= 30)
+                    return Content;
+                return Content.Substring(0, 30) + "...";
+            }
+        }
+        public string ShortTitle
+        {
+            get
+            {
+                if (Title.Length <= 30)
+                    return Title;
+                return Title.Substring(0, 30) + "...";
+            }
+        }
     }
 }

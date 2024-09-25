@@ -1,6 +1,10 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.Web
 @using WEBB.Components
+@using WEBB.Data
+@using WEBB.Models
+@inject ProductService ProductService
+
 <PageTitle>HANSolution Home</PageTitle>
 
 <HeadContent>
@@ -13,9 +17,10 @@
         <Banner />
     </div>
 </div>
-<div class="white-section">
 
+<div class="white-section">
 </div>
+
 <div class="blue-section">
     <div class="container">
         <div class="section-container">
@@ -25,26 +30,28 @@
                     <button class="more-btn">More &gt;</button>
                 </div>
                 <div class="section-content">
-                    <div class="button-group">
-                        <button class="content-btn">Machine Vision</button>
-                        <button class="content-btn">Automatic Control</button>
+                    <div class="button-group" role="tablist">
+                        @foreach (var option in new[] { "MachineVision", "AutomaticControl" })
+                        {
+                            <button class="content-btn @(siActiveButton == option ? "active" : "")"
+                                    @onclick="() => ToggleSIContent(option)"
+                                    role="tab"
+                                    aria-selected="@(siActiveButton == option)"
+                                    id="@($"tab-{option}")"
+                                    aria-controls="@($"panel-{option}")">
+                                @(option == "MachineVision" ? "Machine Vision" : "Automatic Control")
+                            </button>
+                        }
                     </div>
                     <div class="content-images">
-                        <div class="content-item">
-                            <img src="/images/movie1.png" alt="Content 1">
-                            <h3>이미지 제목 1</h3>
-                            <p>이미지 내용 1</p>
-                        </div>
-                        <div class="content-item">
-                            <img src="/images/movie2.png" alt="Content 2">
-                            <h3>이미지 제목 2</h3>
-                            <p>이미지 내용 2</p>
-                        </div>
-                        <div class="content-item">
-                            <img src="/images/movie3.png" alt="Content 3">
-                            <h3>이미지 제목 3</h3>
-                            <p>이미지 내용 3</p>
-                        </div>
+                        @foreach (var product in ProductService.GetTopProducts("S/I", siActiveButton))
+                        {
+                            <div class="content-item">
+                                <img src="@product.ImageUrl" alt="@product.Title">
+                            <h3>@product.ShortTitle</h3>
+                            <p>@product.ShortContent</p>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -54,26 +61,28 @@
                     <button class="more-btn">More &gt;</button>
                 </div>
                 <div class="section-content">
-                    <div class="button-group">
-                        <button class="content-btn">Machine Vision</button>
-                        <button class="content-btn">Sensors</button>
+                    <div class="button-group" role="tablist">
+                        @foreach (var option in new[] { "MachineVision", "Sensors" })
+                        {
+                            <button class="content-btn @(componentsActiveButton == option ? "active" : "")"
+                                    @onclick="() => ToggleComponentsContent(option)"
+                                    role="tab"
+                                    aria-selected="@(componentsActiveButton == option)"
+                                    id="@($"tab-components-{option}")"
+                                    aria-controls="@($"panel-components-{option}")">
+                                @option
+                            </button>
+                        }
                     </div>
                     <div class="content-images">
-                        <div class="content-item">
-                            <img src="/images/content1.jpg" alt="Content 1">
-                            <h3>이미지 제목 1</h3>
-                            <p>이미지 내용 1</p>
-                        </div>
-                        <div class="content-item">
-                            <img src="/images/content2.jpg" alt="Content 2">
-                            <h3>이미지 제목 2</h3>
-                            <p>이미지 내용 2</p>
-                        </div>
-                        <div class="content-item">
-                            <img src="/images/content3.jpg" alt="Content 3">
-                            <h3>이미지 제목 3</h3>
-                            <p>이미지 내용 3</p>
-                        </div>
+                        @foreach (var product in ProductService.GetTopProducts("Components", componentsActiveButton))
+                        {
+                            <div class="content-item">
+                                <img src="@product.ImageUrl" alt="@product.Title">
+                                <h3>@product.ShortTitle</h3>
+                                <p>@product.ShortContent</p>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -81,8 +90,17 @@
     </div>
 </div>
 
-
 @code {
-  
-}
+    private string siActiveButton = "MachineVision";
+    private string componentsActiveButton = "MachineVision";
 
+    private void ToggleSIContent(string button)
+    {
+        siActiveButton = button;
+    }
+
+    private void ToggleComponentsContent(string button)
+    {
+        componentsActiveButton = button;
+    }
+}

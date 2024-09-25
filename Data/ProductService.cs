@@ -1,80 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WEBB.Models;
 
-namespace WEBB.Services
+namespace WEBB.Data
 {
-    public interface IProductService
-    {
-        Task<List<Product>> GetProductsAsync();
-        Task<Product> GetProductByIdAsync(int id);
-        Task<Product> AddProductAsync(Product product);
-        Task<Product> UpdateProductAsync(Product product);
-        Task<bool> DeleteProductAsync(int id);
-    }
-
-    public class ProductService : IProductService
+    public class ProductService
     {
         private List<Product> _products;
 
         public ProductService()
         {
-            // 샘플 데이터 초기화
             _products = new List<Product>
             {
-                new Product { Id = 1, Name = "제품 A", ShortDescription = "훌륭한 제품 A입니다.", Price = 19.99m, ImageUrl = "/images/product-a.jpg" },
-                new Product { Id = 2, Name = "제품 B", ShortDescription = "놀라운 제품 B입니다.", Price = 29.99m, ImageUrl = "/images/product-b.jpg" },
-                new Product { Id = 3, Name = "제품 C", ShortDescription = "혁신적인 제품 C입니다.", Price = 39.99m, ImageUrl = "/images/product-c.jpg" },
+                new Product { Id = 1, ImageUrl = "/images/movie1.png", Title = "Machine Vision Title 1", Content = "Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1", Category = "S/I", SubCategory = "MachineVision" },
+                new Product { Id = 2, ImageUrl = "/images/movie2.png", Title = "Machine Vision Title 2", Content = "Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2", Category = "S/I", SubCategory = "MachineVision" },
+                new Product { Id = 3, ImageUrl = "/images/movie3.png", Title = "Machine Vision Title 3", Content = "Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3", Category = "S/I", SubCategory = "MachineVision" },
+                new Product { Id = 4, ImageUrl = "/images/movie4.png", Title = "Automatic Control Title 1", Content = "Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1", Category = "S/I", SubCategory = "AutomaticControl" },
+                new Product { Id = 5, ImageUrl = "/images/movie5.png", Title = "Automatic Control Title 2", Content = "Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2", Category = "S/I", SubCategory = "AutomaticControl" },
+                new Product { Id = 6, ImageUrl = "/images/movie1.png", Title = "Automatic Control Title 3", Content = "Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3", Category = "S/I", SubCategory = "AutomaticControl" },
+                new Product { Id = 7, ImageUrl = "/images/movie2.png", Title = "Machine Vision Component Title 1", Content = "Machine Vision Component Content 1Machine Vision Component Content 1Machine Vision Component Content 1Machine Vision Component Content 1Machine Vision Component Content 1Machine Vision Component Content 1Machine Vision Component Content 1", Category = "Components", SubCategory = "MachineVision" },
+                new Product { Id = 8, ImageUrl = "/images/movie3.png", Title = "Machine Vision Component Title 2", Content = "Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2Machine Vision Component Content 2", Category = "Components", SubCategory = "MachineVision" },
+                new Product { Id = 9, ImageUrl = "/images/movie4.png", Title = "Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3Machine Vision Component Title 3", Content = "Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3Machine Vision Component Content 3", Category = "Components", SubCategory = "MachineVision" },
+                new Product { Id = 10, ImageUrl = "/images/movie5.png", Title = "Sensor Title 1", Content = "Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1Sensor Content 1", Category = "Components", SubCategory = "Sensors" },
+                new Product { Id = 11, ImageUrl = "/images/movie1.png", Title = "Sensor Title 2", Content = "Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2Sensor Content 2", Category = "Components", SubCategory = "Sensors" },
+                new Product { Id = 12, ImageUrl = "/images/movie2.png", Title = "Sensor Title 3", Content = "Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3Sensor Content 3", Category = "Components", SubCategory = "Sensors" },
             };
         }
 
-        public async Task<List<Product>> GetProductsAsync()
+        public List<Product> GetTopProducts(string category, string subCategory, int count = 3)
         {
-            // 비동기 작업을 시뮬레이션합니다
-            await Task.Delay(100);
-            return _products;
+            return _products
+                .Where(p => p.Category == category && p.SubCategory == subCategory)
+                .Take(count)
+                .ToList();
         }
 
-        public async Task<Product> GetProductByIdAsync(int id)
+        public List<Product> GetAllProducts(string category, string subCategory)
         {
-            await Task.Delay(50);
+            return _products
+                .Where(p => p.Category == category && p.SubCategory == subCategory)
+                .ToList();
+        }
+
+        public Product GetProductById(int id)
+        {
             return _products.FirstOrDefault(p => p.Id == id);
-        }
-
-        public async Task<Product> AddProductAsync(Product product)
-        {
-            await Task.Delay(100);
-            product.Id = _products.Max(p => p.Id) + 1;
-            _products.Add(product);
-            return product;
-        }
-
-        public async Task<Product> UpdateProductAsync(Product product)
-        {
-            await Task.Delay(100);
-            var existingProduct = _products.FirstOrDefault(p => p.Id == product.Id);
-            if (existingProduct != null)
-            {
-                existingProduct.Name = product.Name;
-                existingProduct.ShortDescription = product.ShortDescription;
-                existingProduct.Price = product.Price;
-                existingProduct.ImageUrl = product.ImageUrl;
-            }
-            return existingProduct;
-        }
-
-        public async Task<bool> DeleteProductAsync(int id)
-        {
-            await Task.Delay(100);
-            var product = _products.FirstOrDefault(p => p.Id == id);
-            if (product != null)
-            {
-                _products.Remove(product);
-                return true;
-            }
-            return false;
         }
     }
 }
