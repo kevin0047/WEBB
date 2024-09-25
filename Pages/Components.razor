@@ -1,0 +1,105 @@
+﻿@page "/components"
+@inject NavigationManager NavigationManager
+@using WEBB.Components
+@using WEBB.Data
+@using WEBB.Models
+@inject ProductService ProductService
+
+<HeadContent>
+    <link href="css/pages/more.css" rel="stylesheet" />
+</HeadContent>
+
+<div class="si-container">
+    <div class="si-content">
+        <h1 class="si-title">Components</h1>
+        <p class="si-description">
+            System integration (often abbreviated as "SI") refers to the process of combining <br />
+            different subsystems or components into one larger system that functions as a whole. 
+        </p>
+    </div>
+    <div class="si-image">
+        <img src="/images/components-top.png" alt="Components" />
+    </div>
+</div>
+
+<div class="si-menu-bar">
+    <nav>
+        <ul>
+            @foreach (var menu in MenuItems)
+            {
+                <li>
+                    <button class="@(ActiveMenu == menu ? "active" : "")" @onclick="() => SetActiveMenu(menu)">
+                        @menu
+                    </button>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+<div class="subcategories">
+    @foreach (var subCategory in SubMenuItems)
+    {
+        <button class="subcategory-btn @(ActiveSubCategory == subCategory ? "active" : "")"
+                @onclick="() => SetActiveSubCategory(subCategory)">
+            @subCategory
+        </button>
+    }
+</div>
+
+<div class="si-content-section">
+    <h2 class="si-subcategory-title">@ActiveMenu - @ActiveSubCategory</h2>
+    @foreach (var product in Products)
+    {
+        <div class="si-product-item">
+            <div class="si-product-image">
+                <img src="@product.ImageUrl" alt="@product.Title" />
+            </div>
+            <div class="si-product-details">
+                <h3 class="si-product-title">@product.ShortTitle</h3>
+                <p class="si-product-content">@product.MiddleContent</p>
+                <button class="si-more-button" @onclick="() => NavigateToProductDetail(product.Id)">More information <span class="arrow">→</span></button>
+            </div>
+        </div>
+        @if (product != Products.Last())
+        {
+            <hr class="si-product-divider" />
+        }
+    }
+</div>
+  
+@code {
+    private string ActiveMenu { get; set; } = "MachineVision";
+    private string ActiveSubCategory { get; set; } = "3D Camera";
+    private List<string> MenuItems { get; set; } = new List<string> { "MachineVision", "Sensors" };
+    private List<string> SubMenuItems { get; set; } = new List<string> { "3D Camera", "2D Camera", "Confocal", "Line scan", "Lens", "LightsLancard" };
+    private List<WEBB.Models.Product> Products { get; set; } = new List<WEBB.Models.Product>();
+
+    protected override void OnInitialized()
+    {
+        LoadProducts();
+    }
+
+    private void SetActiveMenu(string menu)
+    {
+        ActiveMenu = menu;
+        ActiveSubCategory = SubMenuItems[0];  // Reset sub-category when main category changes
+        LoadProducts();
+    }
+
+    private void SetActiveSubCategory(string subCategory)
+    {
+        ActiveSubCategory = subCategory;
+        LoadProducts();
+    }
+
+    private void LoadProducts()
+    {
+        Products = ProductService.GetTopProducts("Components", ActiveMenu, ActiveSubCategory);
+    }
+
+    private void NavigateToProductDetail(int productId)
+    {
+        NavigationManager.NavigateTo($"/componentsProductDetail/{productId}");
+    }
+}

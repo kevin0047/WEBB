@@ -96,7 +96,7 @@ body, html {
 .button-group {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .content-btn {
@@ -143,9 +143,63 @@ body, html {
         font-size: 10px;
         color: #666;
     }
+/*서브 카테고리*/
+.subcategories {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+    position: relative;
+}
 
+    .subcategories::before,
+    .subcategories::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #ccc;
+    }
 
+    .subcategories::before {
+        top: 0;
+    }
 
+    .subcategories::after {
+        bottom: 0;
+    }
+
+.subcategory-btn {
+    background: none;
+    border: none;
+    color: #888;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+    .subcategory-btn::after {
+        content: '';
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 1.8px;
+        height: 2px;
+        background-color: #007bff;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .subcategory-btn:hover,
+    .subcategory-btn.active {
+        color: #007bff;
+    }
+
+        .subcategory-btn:hover::after,
+        .subcategory-btn.active::after {
+            transform: scaleX(1);
+        }
 
 
 

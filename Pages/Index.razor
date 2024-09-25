@@ -4,7 +4,7 @@
 @using WEBB.Data
 @using WEBB.Models
 @inject ProductService ProductService
-
+@inject NavigationManager NavigationManager
 <PageTitle>HANSolution Home</PageTitle>
 
 <HeadContent>
@@ -27,7 +27,8 @@
             <div class="section si-section">
                 <div class="section-header">
                     <h2>S/I</h2>
-                    <button class="more-btn">More &gt;</button>
+
+                    <NavLink class="more-btn" href="@NavigationManager.ToAbsoluteUri("systemIntegration").ToString()">More &gt;</NavLink>
                 </div>
                 <div class="section-content">
                     <div class="button-group" role="tablist">
@@ -44,7 +45,7 @@
                         }
                     </div>
                     <div class="content-images">
-                        @foreach (var product in ProductService.GetTopProducts("S/I", siActiveButton))
+                        @foreach (var product in ProductService.GetAllProducts("S/I", siActiveButton))
                         {
                             <div class="content-item">
                                 <img src="@product.ImageUrl" alt="@product.Title">
@@ -55,27 +56,38 @@
                     </div>
                 </div>
             </div>
-            <div class="section components-section">
+<div class="section components-section">
                 <div class="section-header">
                     <h2>Components</h2>
-                    <button class="more-btn">More &gt;</button>
+                    <NavLink class="more-btn" href="@NavigationManager.ToAbsoluteUri("components").ToString()">More &gt;</NavLink>
                 </div>
                 <div class="section-content">
                     <div class="button-group" role="tablist">
                         @foreach (var option in new[] { "MachineVision", "Sensors" })
                         {
-                            <button class="content-btn @(componentsActiveButton == option ? "active" : "")"
-                                    @onclick="() => ToggleComponentsContent(option)"
-                                    role="tab"
-                                    aria-selected="@(componentsActiveButton == option)"
-                                    id="@($"tab-components-{option}")"
-                                    aria-controls="@($"panel-components-{option}")">
-                                @option
+                            <div class="category-container">
+                                <button class="content-btn @(componentsActiveButton == option ? "active" : "")"
+                                        @onclick="() => ToggleComponentsContent(option)"
+                                        role="tab"
+                                        aria-selected="@(componentsActiveButton == option)"
+                                        id="@($"tab-components-{option}")"
+                                        aria-controls="@($"panel-components-{option}")">
+                                    @option
+                                </button>
+                            </div>
+                        }
+                    </div>
+                    <div class="subcategories">
+                        @foreach (var subCategory in new[] { "3D Camera", "2D Camera", "Confocal","Line scan","Lens","LightsLancard" })
+                        {
+                            <button class="subcategory-btn @(componentsActiveSubCategory == subCategory ? "active" : "")"
+                                    @onclick="() => ToggleComponentsSubCategory(subCategory)">
+                                @subCategory
                             </button>
                         }
                     </div>
                     <div class="content-images">
-                        @foreach (var product in ProductService.GetTopProducts("Components", componentsActiveButton))
+                        @foreach (var product in ProductService.GetTopProducts("Components", componentsActiveButton, componentsActiveSubCategory))
                         {
                             <div class="content-item">
                                 <img src="@product.ImageUrl" alt="@product.Title">
@@ -91,8 +103,9 @@
 </div>
 
 @code {
-    private string siActiveButton = "MachineVision";
+private string siActiveButton = "MachineVision";
     private string componentsActiveButton = "MachineVision";
+    private string componentsActiveSubCategory = "3D Camera";
 
     private void ToggleSIContent(string button)
     {
@@ -102,5 +115,10 @@
     private void ToggleComponentsContent(string button)
     {
         componentsActiveButton = button;
+    }
+
+    private void ToggleComponentsSubCategory(string subCategory)
+    {
+        componentsActiveSubCategory = subCategory;
     }
 }

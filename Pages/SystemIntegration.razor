@@ -1,0 +1,86 @@
+﻿@page "/systemIntegration"
+@inject NavigationManager NavigationManager
+@using WEBB.Components
+@using WEBB.Data
+@using WEBB.Models
+@inject ProductService ProductService
+<HeadContent>
+    <link href="css/pages/more.css" rel="stylesheet" />
+</HeadContent>
+
+<div class="si-container">
+    <div class="si-content">
+        <h1 class="si-title">S/I</h1>
+        <p class="si-description">
+            System integration (often abbreviated as "SI") refers to the process of combining<br />
+            different subsystems or components into one larger system that functions as a whole.
+        </p>
+    </div>
+    <div class="si-image">
+        <img src="/images/systemIntegration-top.png" alt="System Integration" />
+    </div>
+</div>
+
+<div class="si-menu-bar">
+    <nav>
+        <ul>
+            @foreach (var menu in MenuItems)
+            {
+                <li>
+                    <button class="@(ActiveMenu == menu ? "active" : "")" @onclick="() => SetActiveMenu(menu)">
+                        @menu
+                    </button>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+<div class="si-content-section">
+    <h2 class="si-subcategory-title">@ActiveMenu</h2>
+    @foreach (var product in Products)
+    {
+        <div class="si-product-item">
+            <div class="si-product-image">
+                <img src="@product.ImageUrl" alt="@product.Title" />
+            </div>
+            <div class="si-product-details">
+                <h3 class="si-product-title">@product.ShortTitle</h3>
+                <p class="si-product-content">@product.MiddleContent</p>
+
+                <button class="si-more-button" @onclick="() => NavigateToProductDetail(product.Id)">More information <span class="arrow">→</span></button>
+            </div>
+        </div>
+         @if (product != Products.Last())
+        {
+            <hr class="si-product-divider" />
+        }
+    }
+</div>
+
+@code {
+    private string ActiveMenu { get; set; } = "MachineVision";
+    private List<string> MenuItems { get; set; } = new List<string> { "MachineVision", "AutomaticControl" };
+    private List<WEBB.Models.Product> Products { get; set; } = new List<WEBB.Models.Product>();
+
+    protected override void OnInitialized()
+    {
+        LoadProducts();
+    }
+
+    private void SetActiveMenu(string menu)
+    {
+        ActiveMenu = menu;
+        LoadProducts();
+    }
+
+    private void LoadProducts()
+    {
+        Products = ProductService.GetAllProducts("S/I", ActiveMenu);
+    }
+
+    private void NavigateToProductDetail(int productId)
+    {
+        NavigationManager.NavigateTo($"/productDetail/{productId}");
+    }
+}

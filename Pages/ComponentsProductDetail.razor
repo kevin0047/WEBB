@@ -1,0 +1,66 @@
+﻿@page "/componentsProductDetail/{Id:int}"
+@inject ProductService ProductService
+@inject NavigationManager NavigationManager
+@using WEBB.Components
+@using WEBB.Data
+@using WEBB.Models
+<HeadContent>
+    <link href="css/pages/more.css" rel="stylesheet" />
+</HeadContent>
+<div class="si-container">
+    <div class="si-content">
+        <h1 class="si-title">Components</h1>
+        <p class="si-description">
+System integration (often abbreviated as "SI") refers to the process of combining <br />
+different subsystems or components into one larger system that functions as a whole. 
+        </p>
+    </div>
+    <div class="si-image">
+        <img src="/images/components-top.png" alt="Components" />
+    </div>
+</div>
+<hr class="si-divider" />
+<div class="si-container si-detail-container">
+    @if (product != null)
+    {
+        <h1 class="si-product-title">@product.Title</h1>
+        <div class="si-product-content-wrapper">
+            <div class="si-image si-product-image">
+                <img src="@product.ImageUrl" alt="@product.Title" />
+            </div>
+            <div class="si-product-content">
+                <p>@product.Content</p>
+            </div>
+        </div>
+
+
+       
+
+
+
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+</div>
+
+        <div class="com-spec-section">
+            <h2 class="com-spec-title">제원표</h2>
+            <div class="com-spec-image">
+                <img src="/images/detail@(Id).png" alt="제원표" />
+            </div>
+        </div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private WEBB.Models.Product product;
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = await ProductService.GetProductById(Id);
+    }
+
+
+}

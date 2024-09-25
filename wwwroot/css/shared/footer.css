@@ -2,7 +2,7 @@
     background-color: #333;
     color: #fff;
     padding: 2rem 0;
-    margin-top: 2rem;
+    
 }
 
 .footer-content {
@@ -49,7 +49,7 @@
 
 .social-icon {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .footer-bottom {
@@ -60,6 +60,7 @@
 
     .footer-bottom p {
         margin: 0.5rem 0;
+
     }
 
     .footer-bottom a {
