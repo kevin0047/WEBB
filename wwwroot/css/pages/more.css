@@ -264,7 +264,7 @@
 }
 /*제원표*/
 .com-spec-section {
-    background-color: #e6f2ff; /* 연한 파란색 */
+    background-color: #e6f2ff; 
     padding: 30px;
     margin-top: 20px;
 }
@@ -274,11 +274,62 @@
     margin-bottom: 15px;
     color: #333;
 }
-
+.com-spec-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .com-spec-image img {
     max-width: 100%;
     height: auto;
 }
+/* pdf 다운로드 */
+.white-section {
+    background-color: white;
+    padding: 30px;
+}
+
+.rectangle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom :60px;
+}
+
+.rectangle {
+    border: 1px solid #e0e0e0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+.file-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.file-name {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.download-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+    .download-btn:hover {
+        background-color: #0056b3;
+    }
 
 @media (max-width: 768px) {
     .si-container {

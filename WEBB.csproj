@@ -16,10 +16,12 @@
     <Content Remove="wwwroot\images\footer-logo.png" />
     <Content Remove="wwwroot\images\home-background.png" />
     <Content Remove="wwwroot\images\logo.png" />
+    <Content Remove="wwwroot\images\pdf-icon.png" />
     <Content Remove="wwwroot\images\systemIntegration-top.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="wwwroot\images\pdf-icon.png" />
     <Resource Include="wwwroot\images\systemIntegration-top.png" />
   </ItemGroup>
 
