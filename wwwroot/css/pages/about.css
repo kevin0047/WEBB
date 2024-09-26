@@ -391,138 +391,168 @@ body, html {
     color: #333333;
 }
 
-@media (max-width: 768px) {
-    .company-history {
-        padding: 30px 0 0;
-    }
-
-        .company-history .section-title {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
 
 
 
-/* 조직도  */
-.organization-chart {
-padding: 40px 0 0;
-background-color: #F3F5F7;
-}
-
-    .organization-chart .section-title {
-        font-size: 24px;
-        font-weight: bold;
-        text-align: left;
-
-        max-width: 1300px;
-        margin: 0 auto 30px;
-        padding: 0 20px;
-        box-sizing: border-box;
-    }
-
-
-
-
-@media (max-width: 768px) {
     .organization-chart {
-        padding: 30px 0 0;
+        padding: 40px 0 80px;
+        background-color: #F3F5F7;
     }
 
         .organization-chart .section-title {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            max-width: 1300px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-    .organization-image {
-        width: 100%;
-        height: auto;
-        max-width: 298px;
-        max-height: 416px;
+    .chart-container {
+        position: relative;
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
     }
-}
 
-/* 오시는 길*/
-.location {
-    padding: 40px 0;
-    background-color: white;
-}
+    .outer-circle {
+        position: absolute;
+        width: 534px;
+        height: 534px;
+        border: 2px dashed #D9DDDF;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
 
-    .location .section-title {
-        font-size: 24px;
+    .center-background {
+        position: absolute;
+        width: 244px;
+        height: 244px;
+        background: rgba(49, 142, 201, 0.2);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .center {
+        position: absolute;
+        width: 208px;
+        height: 208px;
+        background: #318EC9;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    .small-circle {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background: white;
+        border: 8px solid #D9DDDF;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-weight: bold;
-        text-align: left;
+        z-index: 3;
+    }
 
+    /* 오시는 길 */
+    .location {
+        padding: 40px 0;
+        background-color: white;
+    }
+
+        .location .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            max-width: 1300px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+    .location-item {
+        margin-bottom: 30px;
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .map-container {
+        width: 100%;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+        }
+
+    .address-container {
+        text-align: left;
+        padding: 20px 0;
+    }
+
+        .address-container h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .address-container p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .address-container .label {
+            color: #318EC9;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+    .location-separator {
         max-width: 1300px;
         margin: 0 auto 30px;
-        padding: 0 20px;
-        box-sizing: border-box;
+        border-bottom: 1px solid #D9DDDF;
     }
 
-.location-item {
-    margin-bottom: 30px;
-}
+    @media (max-width: 768px) {
+        .chart-container {
+            width: 100%;
+            height: auto;
+            padding-bottom: 100%;
+        }
 
-.map-container {
-    width: 100%;
-    max-width: 1194px;
-    margin: 0 auto 30px;
-    overflow: hidden;
-}
+        .small-circle {
+            width: 80px;
+            height: 80px;
+            font-size: 12px;
+        }
 
-    .map-container iframe {
-        width: 100%;
-        height: 320px;
-        border: 0;
+        .location .section-title {
+            font-size: 20px;
+        }
+
+        .map-container iframe {
+            height: 250px;
+        }
+
+        .address-container p {
+            font-size: 14px;
+        }
     }
 
-.address-container {
-    max-width: 1194px;
-    margin: 0 auto;
-    text-align: left;
-    padding: 20px 0;
-}
 
-    .address-container h3 {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .address-container p {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-
-    .address-container .label {
-        color: #318EC9;
-        font-weight: bold;
-        margin-right: 10px;
-    }
-
-.location-separator {
-    max-width: 1194px;
-    margin: 0 auto 30px;
-    border-bottom: 1px solid #D9DDDF;
-}
-
-@media (max-width: 1200px) {
-    .map-container,
-    .address-container,
-    .location-separator {
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .location .section-title {
-        font-size: 20px;
-    }
-
-    .map-container iframe {
-        height: 250px;
-    }
-
-    .address-container p {
-        font-size: 14px;
-    }
-}
