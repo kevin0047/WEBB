@@ -186,6 +186,30 @@ body, html {
         padding: 0 20px;
         box-sizing: border-box;
     }
+.area-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.area-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #D9DDDF;
+    margin-bottom: 15px;
+}
+.area-content {
+    font-size: 14px;
+    line-height: 1.6;
+}
+    .area-content ul.no-bullets {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+        .area-content ul.no-bullets li {
+            margin-bottom: 5px;
+        }
 
 .areas-container {
     display: flex;
@@ -263,7 +287,7 @@ body, html {
     padding: 15px;
     margin-bottom: 10px;
     border: 1px solid #D9DDDF;
-    border-radius: 10px;
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
@@ -299,25 +323,73 @@ body, html {
         margin: 0 auto 30px;
         padding: 0 20px;
         box-sizing: border-box;
-    } 
+    }
+.timeline {
+    position: relative;
+    height: 500px;
+    padding: 20px 0;
+}
 
-.history-image-container {
-    width: 100%;
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 100%;
+        background: #318EC9;
+    }
+
+.timeline-item {
+    position: absolute;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
 }
 
-.history-image {
-    width: 298px;
-    height: 416px;
-    object-fit: cover; 
-    display: block;
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 10.5px);
+        width: 18px;
+        height: 18px;
+        border: 2px solid #318EC9;
+        border-radius: 50%;
+        background: white;
+        z-index: 1;
+    }
+
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: calc(50% - 16px);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(49, 142, 201, 0.2);
+    }
+
+.timeline-year {
+    width: 45%;
+    text-align: right;
+    padding-right: 30px;
+    font-weight: bold;
+    color: #318EC9;
 }
 
+.timeline-content {
+    width: 45%;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.timeline-month {
+    font-weight: bold;
+    color: #333333;
+}
 
 @media (max-width: 768px) {
     .company-history {
@@ -329,13 +401,7 @@ body, html {
             margin-bottom: 20px;
         }
 
-    .history-image {
-        width: 100%;
-        height: auto;
-        max-width: 298px;
-        max-height: 416px;
-    }
-}
+
 
 /* 조직도  */
 .organization-chart {
@@ -354,23 +420,7 @@ background-color: #F3F5F7;
         box-sizing: border-box;
     }
 
-.organization-image-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
 
-.organization-image {
-    width: 644px;
-    height: 617px;
-    object-fit: cover;
-    display: block;
-    margin-bottom: 100px
-}
 
 
 @media (max-width: 768px) {
