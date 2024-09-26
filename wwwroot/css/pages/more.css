@@ -309,32 +309,32 @@ body, html {
     width: 100%;
 }
 /*제원표*/
-.com-spec-section {
-    background: #F3F5F7; 
-    ;
-    padding: 30px;
-    margin-top: 20px;
+.com-spec-section, .white-section {
+    max-width: 1300px;
+    margin: 20px auto 0;
+    padding: 30px 20px;
+    box-sizing: border-box;
 }
-
-.com-spec-title {
+.com-spec-section {
+    background: #F3F5F7;
+}
+.com-spec-title, .white-section h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: #333;
+    padding: 0 20px;
 }
 .com-spec-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
 }
 .com-spec-image img {
     max-width: 100%;
     height: auto;
 }
 /* pdf 다운로드 */
-.white-section {
-    background-color: white;
-    padding: 30px;
-}
 
 .rectangle-grid {
     display: grid;
@@ -344,7 +344,9 @@ body, html {
     margin: 0 auto;
     margin-bottom :60px;
 }
-
+.white-section {
+    background-color: white;
+}
 .rectangle {
     border: 1px solid #e0e0e0;
     height: 80px;
