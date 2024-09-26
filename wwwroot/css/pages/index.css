@@ -201,9 +201,17 @@ body, html {
             transform: scaleX(1);
         }
 
+/*카테고리 제품들의 바로가기 스타일*/
 
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 
-
+    .product-link:hover {
+        opacity: 0.8;
+    }
 
 
 

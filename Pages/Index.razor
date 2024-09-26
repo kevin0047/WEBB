@@ -44,16 +44,18 @@
                             </button>
                         }
                     </div>
-                    <div class="content-images">
+<div class="content-images">
                         @foreach (var product in ProductService.GetAllProducts("S/I", siActiveButton))
                         {
-                            <div class="content-item">
-                                <img src="@product.ImageUrl" alt="@product.Title">
-                            <h3>@product.ShortTitle</h3>
-                            <p>@product.ShortContent</p>
-                            </div>
+            <div class="content-item">
+                    <a href="@($"/systemIntegrationProductDetail/{product.Id}")" class="product-link">
+                    <img src="@product.ImageUrl" alt="@product.Title">
+                    <h3>@product.ShortTitle</h3>
+                </a>
+                <p>@product.ShortContent</p>
+            </div>
                         }
-                    </div>
+</div>
                 </div>
             </div>
 <div class="section components-section">
@@ -89,13 +91,15 @@
                     <div class="content-images">
                         @foreach (var product in ProductService.GetTopProducts("Components", componentsActiveButton, componentsActiveSubCategory))
                         {
-                            <div class="content-item">
-                                <img src="@product.ImageUrl" alt="@product.Title">
-                                <h3>@product.ShortTitle</h3>
-                                <p>@product.ShortContent</p>
-                            </div>
+            <div class="content-item">
+                    <a href="@($"/componentsProductDetail/{product.Id}")" class="product-link">
+                    <img src="@product.ImageUrl" alt="@product.Title">
+                    <h3>@product.ShortTitle</h3>
+                </a>
+                <p>@product.ShortContent</p>
+            </div>
                         }
-                    </div>
+</div>
                 </div>
             </div>
         </div>
