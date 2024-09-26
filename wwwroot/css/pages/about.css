@@ -1,17 +1,152 @@
-﻿
-/* 여기에 스타일을 추가할 수 있습니다. */
-section {
-    margin-bottom: 2rem;
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.si-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-h2 {
-    color: #333;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
+.si-content {
+    flex: 1;
+    padding-right: 0rem;
+    padding-top: 1rem;
 }
 
-.team-member {
+.si-title {
+    font-weight: bold;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
+.si-description {
+    font-size: 0.5rem;
+    line-height: 1.6;
+    text-align: left;
+    color: gray;
+}
 
+.si-image {
+    flex: 0 0 500px;
+}
+
+    .si-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+/*메뉴바*/
+.si-menu-bar {
+    background-color: #8E99AD;
+    height: 44.5px;
+}
+
+    .si-menu-bar nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: left;
+    }
+
+        .si-menu-bar nav ul li {
+            margin: 0 15px;
+        }
+
+            .si-menu-bar nav ul li button {
+                color: #ccc;
+                text-decoration: none;
+                padding: 12px 0;
+                transition: color 0.3s ease;
+                cursor: pointer;
+                background: none;
+                border: none;
+                font-size: inherit;
+            }
+
+                .si-menu-bar nav ul li button:hover,
+                .si-menu-bar nav ul li button.active {
+                    color: white;
+                }
+
+                .si-menu-bar nav ul li button.active {
+                    border-bottom: 2px solid white;
+                }
+
+.ceo-message-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* 자식 요소들을 컨테이너 높이에 맞춰 늘림 */
+    min-height: calc(100vh - 200px); /* 페이지 높이에서 헤더와 푸터 높이를 뺀 값 */
+    margin-bottom: 0; /* 하단 여백 제거 */
+}
+
+.ceo-message-content {
+    flex: 1;
+    padding-right: 2rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 컨텐츠를 상단에 정렬 */
+}
+
+    .ceo-message-content h3 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    .ceo-message-content p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+.ceo-signature {
+    margin-top: auto; /* 서명을 컨텐츠 영역의 하단으로 밀어냄 */
+
+}
+.ceo-title {
+    font-weight: bold;
+    font-size: 1.2em; /* 기본 폰트 크기의 1.2배 */
+
+    margin-top: 0.5em; /* 위쪽 여백 추가 */
+}
+
+.ceo-image-container {
+    flex: 0 0 40%;
+    max-width: 40%;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* 이미지를 하단에 정렬 */
+}
+
+.ceo-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .ceo-message-container {
+        flex-direction: column;
+    }
+
+    .ceo-message-content {
+        padding-right: 0;
+        margin-bottom: 1rem;
+        order: 2;
+    }
+
+    .ceo-image-container {
+        flex: 0 0 100%;
+        max-width: 100%;
+        order: 1;
+        margin-bottom: 1rem;
+    }
+}

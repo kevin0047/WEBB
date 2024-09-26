@@ -1,61 +1,150 @@
 ﻿@page "/about"
 @using Microsoft.AspNetCore.Components.Web
-<PageTitle>DEVLINK About</PageTitle>
-
+@inject NavigationManager NavigationManager
+@using WEBB.Components
+@using WEBB.Data
+@using WEBB.Models
+@inject ProductService ProductService
 <HeadContent>
     <link href="css/pages/about.css" rel="stylesheet" />
 </HeadContent>
-<h1>DEVLINK 소개</h1>
-
-<section class="company-history">
-    <h2>우리의 역사</h2>
-    <p>
-        DEVLINK는 2023년에 설립되어 머신비전과 딥러닝 기술을 제공하고 있습니다. 
-        지난 1년 동안, 우리는 [주요 성과나 성장 내용]을 이루어냈습니다.
-    </p>
-</section>
-
-<section class="mission-vision">
-    <h2>미션 & 비전</h2>
-    <div class="mission">
-        <h3>미션</h3>
-        <ul>
-        <li>제조업 혁신 주도</li>
-        </ul>
+<PageTitle>HANSolution About</PageTitle>
+<div class="si-container">
+    <div class="si-content">
+        <h1 class="si-title">About</h1>
+        <p class="si-description">
+            비젼 시스템& 컴포넌트 전문 기업, (주)한솔루션
+        </p>
     </div>
-    <div class="vision">
-        <h3>비전</h3>
-        <ul>
-            <li>지속적 연구개발</li>
-            <li>기술 융합</li>
-            <li>검사 솔루션 리더</li>
-        </ul>
+    <div class="si-image">
+        <img src="/images/about-top.png" alt="System Integration" />
     </div>
-</section>
+</div>
 
-<section class="core-values">
-    <h2>핵심 가치</h2>
-    <ul>
-        <li>신뢰, 정확성</li>
-        <li>혁신</li>
-        <li>파트너십</li>
-        <!-- 필요에 따라 추가 -->
-    </ul>
-</section>
+<div class="si-menu-bar">
+    <nav>
+        <ul>
+            @foreach (var menu in MenuItems)
+            {
+                    <li>
+                        <button class="@(ActiveMenu == menu ? "active" : "")" @onclick="() => SetActiveMenu(menu)">
+                        @menu
+                        </button>
+                    </li>
+            }
+        </ul>
+    </nav>
+</div>
 
-<section class="team">
-    <h2>경영진 소개</h2>
-    <div class="team-member">
-        <h3>전명근, CEO</h3>
-        <p>[간단한 소개]</p>
+<div class="si-content-section">
+    <h2 class="si-subcategory-title">@ActiveMenu</h2>
+  
+    @if (ActiveMenu == "CEO 인사말")
+    {
+        <div class="ceo-message-container"> 
+            <div class="ceo-message-content"> 
+                <h3>CEO 인사말</h3> 
+                    <p>한솔루션은 고객의 고민을 최우선으로 생각하는 동반자 정신으로 저희의 진심어린 마음을 <br /> 담은 솔루션을 제공하고 있습니다.</p> 
+                    <p>상대방을 이기는것이 능사가 아닙니다. <br />상대방이 하는일을 소리 소문 없이 도와 그가 성공하고 그의 도움을 받아 나도 함께 성공하는 것이 행복입니다.</p> 
+                    <p>앞서가는 사람을 붙잡거나 따라잡는 경쟁이 아니라 서로 도와 각자 자기 분야에서<br /> 앞서갈 수 있도록 협력하는 것이 진정 아름다운 21세기형 경쟁입니다.</p> 
+            <p class="ceo-signature">
+                아이유뉴스 / 월간센서기술<br>
+                (주)한솔루션 <span class="ceo-title">대표이사</span>
+            </p>
+                </div> 
+                <div class="ceo-image-container"> 
+                    <img src="/images/ceo.png" alt="CEO" class="ceo-image" /> 
+                </div> 
+            </div>
+    }
 
-    </div>  <div class="team-member">
-            <h3>권승용, PRO</h3>
-        <p>[간단한 소개]</p>    </div>
-    <!-- 필요에 따라 추가 팀원 정보 -->
-</section>
+    else if (ActiveMenu == "사업분야")
+
+    {
+
+            <div class="business-areas">
+
+                <ul>
+
+                    <li>비전 시스템 개발</li>
+
+                    <li>머신 비전 솔루션</li>
+
+                    <li>산업용 카메라 및 렌즈</li>
+
+                    <li>이미지 처리 소프트웨어</li>
+
+                </ul>
+
+            </div>
+
+    }
+
+    else if (ActiveMenu == "회사연혁")
+
+    {
+
+            <div class="company-history">
+
+                <ul>
+
+                    <li>2010년 - 회사 설립</li>
+
+                    <li>2015년 - 첫 번째 비전 시스템 출시</li>
+
+                    <li>2018년 - 해외 시장 진출</li>
+
+                    <li>2022년 - 연간 매출 100억 달성</li>
+
+                </ul>
+
+            </div>
+
+    }
+
+    else if (ActiveMenu == "조직도")
+
+    {
+
+            <div class="organization-chart">
+
+                <img src="/images/org-chart.png" alt="조직도" />
+
+            </div>
+
+    }
+
+    else if (ActiveMenu == "오시는 길")
+
+    {
+
+            <div class="location">
+
+                <p>주소: 서울특별시 강남구 테헤란로 123 한솔루션빌딩</p>
+
+                <p>전화: 02-1234-5678</p>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.3515951941458!2d127.02881231531902!3d37.49860297981124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca157fbf0bd01%3A0x878b8aa6c9c7d8e8!2z7YWM7Iqk7YG065-7!5e0!3m2!1sko!2skr!4v1654234567890!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+    }
+
+</div>
+
+
 
 @code {
-    // 필요한 경우 여기에 C# 코드를 추가할 수 있습니다.
-}
+    private string ActiveMenu { get; set; } = "CEO 인사말";
+    private List<string> MenuItems { get; set; } = new List<string> { "CEO 인사말", "사업분야", "회사연혁", "조직도", "오시는 길" };
 
+
+   
+
+    private void SetActiveMenu(string menu)
+    {
+        ActiveMenu = menu;
+        
+    }
+
+
+
+}
