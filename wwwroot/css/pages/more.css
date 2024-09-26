@@ -1,7 +1,9 @@
-﻿body, html {
+﻿@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 .si-container {
     display: flex;
@@ -121,14 +123,14 @@
         right: 20px;
         bottom: 1.8px;
         height: 2px;
-        background-color: #007bff;
+        background-color: #318EC9;
         transform: scaleX(0);
         transition: transform 0.3s ease;
     }
 
     .subcategory-btn:hover,
     .subcategory-btn.active {
-        color: #007bff;
+        color: #318EC9;
     }
 
         .subcategory-btn:hover::after,
@@ -224,16 +226,16 @@
     align-items: center;
     padding: 10px 20px;
     background-color: white;
-    color: #007bff;
+    color: #318EC9;
     text-decoration: none;
-    border: 2px solid #007bff;
+    border: 2px solid #318EC9;
     border-radius: 25px;
     transition: all 0.3s;
     font-weight: bold;
     margin-top: 25px;
 }
     .si-more-button:hover {
-        background-color: #007bff;
+        background-color: #318EC9;
         color: white;
     }
 
@@ -250,7 +252,7 @@
 .si-product-divider {
     border: none;
     border-top: 1px solid #e0e0e0;
-    margin: 0;
+    margin-bottom: 40px;
     padding: 20px 0;
     max-width: 1200px;
 }
@@ -265,7 +267,8 @@
 }
 /*제원표*/
 .com-spec-section {
-    background-color: #e6f2ff; 
+    background: #F3F5F7; 
+    ;
     padding: 30px;
     margin-top: 20px;
 }
@@ -318,7 +321,7 @@
 }
 
 .download-btn {
-    background-color: #007bff;
+    background: #318EC9;
     color: white;
     border: none;
     padding: 8px 15px;

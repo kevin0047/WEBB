@@ -37,10 +37,11 @@
 </div>
 
 <div class="si-content-section">
-    <h2 class="si-subcategory-title">@ActiveMenu</h2>
+    
   
     @if (ActiveMenu == "CEO 인사말")
     {
+             <div class="ceo-areas">
         <div class="ceo-message-container"> 
             <div class="ceo-message-content"> 
                 <h3>CEO 인사말</h3> 
@@ -55,28 +56,161 @@
                 <div class="ceo-image-container"> 
                     <img src="/images/ceo.png" alt="CEO" class="ceo-image" /> 
                 </div> 
-            </div>
+                </div></div>
     }
 
     else if (ActiveMenu == "사업분야")
-
     {
+        <div class="business-areas">
+            <h2>사업분야</h2>
+            <div class="areas-container">
+                <div class="area-item">
+                    <div class="area-image">
+                            <img src="/images/business1.png" alt="자동차장비 사업부" />
+                    </div>
+                        <h3 class="area-title">자동차장비 사업부</h3>
+                    <div class="area-divider"></div>
+                    <div class="area-content">
+                            <ul class="no-bullets">
+                                <li>장비 컨셉 기획 및 설계</li>
+                                <li>장비 통신 및 제어</li>
+                                <li>장비 제조 및 CS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="area-item">
+                    <div class="area-image">
+                                <img src="/images/business2.png" alt="머신비젼 사업부" />
+                    </div>
+                        <h3 class="area-title">머신비젼 사업부</h3>
+                    <div class="area-divider"></div>
+                    <div class="area-content">
+                            <ul class="no-bullets">
+                                <li>머신비젼 소프트웨어개발</li>
+                                <li>스마트 팩토리 네트워크 구축</li>
+                                <li>Telecentric Lens 설계 개발</li>
+                                    <li>광학 조명 및 제어기 개발</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="area-item">
+                    <div class="area-image">
+                                <img src="/images/business3.png" alt="자동차부품 유통사업부" />
+                    </div>
+                        <h3 class="area-title">자동차부품 유통사업부</h3>
+                    <div class="area-divider"></div>
+                    <div class="area-content">
+                            <ul class="no-bullets">
+                                <li>자동차 관련 부품 수입 및 판매</li>
+                                <li>포토/레이져/근접센서 판매</li>
+                                <li>화이버센서 국내 OEM 제조 판매</li>
+                                        <li>머신비젼관련-카메라,렌즈,케이블</li>
+                                            <li>머신비젼용 조명 및 렌즈 제조 판매</li>
+                                                <li>산업용 PC 제조 판매</li>
+                                                    <li>직교로봇 및 스테이지 판매</li>
+                                                        <li>모션 관련 컴포넌트 판매</li>
+                                                            <li>세이프티 관련 컴포넌트 판매</li>
 
-            <div class="business-areas">
-
-                <ul>
-
-                    <li>비전 시스템 개발</li>
-
-                    <li>머신 비전 솔루션</li>
-
-                    <li>산업용 카메라 및 렌즈</li>
-
-                    <li>이미지 처리 소프트웨어</li>
-
-                </ul>
-
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </div>
+
+            <div class="white-section">
+            <div class="section-container">
+                    <h2 class="section-title">반도체 및 전자산업</h2>
+                <div class="section-image">
+                            <img src="/images/business4.png" alt="반도체 및 전자산업" />
+                </div>
+                <div class="box-container">
+                        <div class="rounded-box"><p>자동 시각 검사(AOI)솔루션</p></div>
+                        <div class="rounded-box"><p>납땜 검사</p></div>
+                        <div class="rounded-box"><p>인쇄 및 텍스트 품질 검사</p></div>
+                        <div class="rounded-box"><p>제품 추적</p></div>
+                                <div class="rounded-box"><p>기준검색</p></div>
+                                        <div class="rounded-box"><p>PCB 검사</p>
+                                                </div><div class="rounded-box"><p>특성 존재 확인</p></div>
+                                            <div class="rounded-box"><p>바코드 및 Data Matrix 코드 판독</p></div>
+                                                <div class="rounded-box"><p>표면 실장 배치 및 정렬</p></div>
+                                                    <div class="rounded-box"><p>보호 코팅 및 색상 검사</p></div>
+                                                        <div class="rounded-box"><p>부품 코드 확인</p></div>
+                                                            <div class="rounded-box"><p>부품확인 - 손실이나 부정확, 반전</p></div>
+                                                                <div class="rounded-box"><p>제품 결함 검사</p></div>
+                                                                    
+
+                </div>
+            </div>
+
+            <div class="section-container">
+                    <h2 class="section-title">반도체 및 전자산업</h2>
+                <div class="section-image">
+                            <img src="/images/business5.png" alt="반도체 및 전자산업" />
+                </div>
+                <div class="box-container">
+                        <div class="rounded-box"><p>부품의 존재 확인</p></div>
+                        <div class="rounded-box"><p>부품 코드 확인</p></div>
+                        <div class="rounded-box"><p>표면 검사</p></div>
+                        <div class="rounded-box"><p>오류 방지 부품조립</p></div>
+                                <div class="rounded-box"><p>하위 부품 확인</p></div>
+                                    <div class="rounded-box"><p>문자와 패턴 인식</p></div>
+                                        <div class="rounded-box"><p>색상 분석</p></div>
+                                            <div class="rounded-box"><p>인쇄 및 텍스트 검사</p></div>
+                                                <div class="rounded-box"><p>자동차 부품 측정</p></div>
+                                                    <div class="rounded-box"><p>로봇 가이던스</p></div>
+                                                        <div class="rounded-box"><p>제품 추적</p></div>
+                                                            <div class="rounded-box"><p>단락 및 불꽃 탐지</p></div>
+                                                                <div class="rounded-box"><p>비드 및 씰 확인</p></div>
+                                                                    <div class="rounded-box"><p>종류 확인</p></div>
+                                                                        <div class="rounded-box"><p>제품 결함 탐지</p></div>
+                                                                            <div class="rounded-box"><p>바코드 및 Data Matrix 코드 판독</p></div>
+
+                </div>
+            </div>
+
+            <div class="section-container">
+                    <h2 class="section-title">인쇄, 포장, 식품 관련산업</h2>
+                <div class="section-image">
+                            <img src="/images/business6.png" alt="인쇄, 포장, 식품 관련산업" />
+                </div>
+                <div class="box-container">
+                        <div class="rounded-box"><p>날짜, 제품 번호 및 부품 번호 확인 </p></div>
+                        <div class="rounded-box"><p>손상된 상자 검사</p></div>
+                        <div class="rounded-box"><p>식품 검사</p></div>
+                        <div class="rounded-box"><p>크기 및 특성 검사</p></div>
+                                <div class="rounded-box"><p>인쇄 품질 검사</p></div>
+                                    <div class="rounded-box"><p>포장 측정 및 확인</p></div>
+                                        <div class="rounded-box"><p>식표면 오염 검사</p></div>
+                                            <div class="rounded-box"><p>병 충전 수위</p></div>
+                                                <div class="rounded-box"><p>색상 검사 및 처리</p></div>
+                                                   
+
+                </div>
+            </div>
+        </div>
+                    <div class="section-container">
+                        <h2 class="section-title">제약, 의료, 관련산업</h2>
+                <div class="section-image">
+                            <img src="/images/business7.png" alt="인쇄, 포장, 식품 관련산업" />
+                </div>
+                <div class="box-container">
+                            <div class="rounded-box"><p>의료 기기 크기 검사</p></div>
+                            <div class="rounded-box"><p>OCV (시각적 문자 확인)</p></div>
+                            <div class="rounded-box"><p>제품 추적성</p></div>
+                                <div class="rounded-box"><p>제품 결함 탐지</p></div>
+                                <div class="rounded-box"><p>상표 설치 확인 및 정렬 검사</p></div>
+                            <div class="rounded-box"><p>부품 코드 확인</p></div>
+                            <div class="rounded-box"><p>바코드 및 Data Matrix 코드 판독</p></div>
+                            <div class="rounded-box"><p>배치, 품목, 날짜 코드 판독 및 확인</p></div>
+                                <div class="rounded-box"><p>인쇄 및 텍스트 품질 검사</p></div>
+                            <div class="rounded-box"><p>표면 오염 검사</p></div>
+                            <div class="rounded-box"><p>OCR (시각적 문자 인식)</p></div>
+                            <div class="rounded-box"><p>특성 존재 확인</p></div>
+                                <div class="rounded-box"><p>색상 확인</p></div>
+                           
+                </div>
+            </div>
+        
 
     }
 
@@ -84,21 +218,12 @@
 
     {
 
-            <div class="company-history">
-
-                <ul>
-
-                    <li>2010년 - 회사 설립</li>
-
-                    <li>2015년 - 첫 번째 비전 시스템 출시</li>
-
-                    <li>2018년 - 해외 시장 진출</li>
-
-                    <li>2022년 - 연간 매출 100억 달성</li>
-
-                </ul>
-
+        <div class="company-history">
+            <h2 class="section-title">회사 연혁</h2>
+            <div class="history-image-container">
+                <img src="/images/history.png" alt="회사 연혁" class="history-image" />
             </div>
+        </div>
 
     }
 
@@ -106,26 +231,69 @@
 
     {
 
-            <div class="organization-chart">
+                <div class="organization-chart">
+                <h2 class="section-title">조직도</h2>
+                    <div class="organization-image-container">
+                            <img src="/images/group.png" alt="조직도" class="organization-image" />
+                    </div></div>
 
-                <img src="/images/org-chart.png" alt="조직도" />
-
-            </div>
 
     }
 
     else if (ActiveMenu == "오시는 길")
-
     {
-
-            <div class="location">
-
-                <p>주소: 서울특별시 강남구 테헤란로 123 한솔루션빌딩</p>
-
-                <p>전화: 02-1234-5678</p>
-
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.3515951941458!2d127.02881231531902!3d37.49860297981124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca157fbf0bd01%3A0x878b8aa6c9c7d8e8!2z7YWM7Iqk7YG065-7!5e0!3m2!1sko!2skr!4v1654234567890!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <div class="location">
+            <h2 class="section-title">오시는 길</h2>
+            <div class="location-item">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.2254623402732!2d126.67879731243621!3d37.45170357981409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b796f11fd1ae9%3A0x7bc47d5bdeb646b7!2z7KCE7JW865OA7J247YOA7JuMIDLssKw!5e0!3m2!1sko!2skr!4v1685824238802!5m2!1sko!2skr" 
+                        width="1194" 
+                        height="320" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="address-container">
+                    <h3>본사</h3>
+                    <p>
+                        <span class="label">addr.</span>
+                        인천시 미추홀구 방축로 312(주안동) 주안제이타워2차1002호 (주)한솔루션
+                    </p>
+                    <p>
+                        <span class="label">Tel.</span>
+                        032-623-7054
+                    </p>
+                </div>
             </div>
+            <div class="location-separator"></div>
+            <div class="location-item">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.2254623402732!2d126.67879731243621!3d37.45170357981409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b796f11fd1ae9%3A0x7bc47d5bdeb646b7!2z7KCE7JW865OA7J247YOA7JuMIDLssKw!5e0!3m2!1sko!2skr!4v1685824238802!5m2!1sko!2skr" 
+                        width="1194" 
+                        height="320" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="address-container">
+                    <h3>평택공장</h3>
+                    <p>
+                        <span class="label">addr.</span>
+                        경기도 평택시 진위면 마산1길 9-5
+                    </p>
+                    <p>
+                        <span class="label">Tel.</span>
+                        032-623-7054
+                    </p>
+                </div>
+            </div>
+        </div>
     }
 
 </div>

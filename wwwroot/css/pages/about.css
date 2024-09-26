@@ -1,14 +1,16 @@
-﻿body, html {
+﻿@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+body, html {
     margin: 0;
-    padding: 0;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     overflow-x: hidden;
 }
 .si-container {
     display: flex;
     justify-content: space-between;
-    padding: 0rem;
-    max-width: 1200px;
-    margin: 0 auto;
+   
+    max-width: 1300px;
+
+    margin-left:20px;
 }
 
 .si-content {
@@ -19,12 +21,12 @@
 
 .si-title {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 28px;
     margin-bottom: 1rem;
 }
 
 .si-description {
-    font-size: 0.5rem;
+    font-size: 14px;
     line-height: 1.6;
     text-align: left;
     color: gray;
@@ -43,7 +45,7 @@
 /*메뉴바*/
 .si-menu-bar {
     background-color: #8E99AD;
-    height: 44.5px;
+    height: 48px;
 }
 
     .si-menu-bar nav ul {
@@ -77,13 +79,21 @@
                 .si-menu-bar nav ul li button.active {
                     border-bottom: 2px solid white;
                 }
-
+/*Ceo 인사*/
+.ceo-areas {
+    max-width: 100%;
+    background-color: #F3F5F7;
+    padding-top: 30px;
+    margin-top: -1px;
+}
 .ceo-message-container {
     display: flex;
     justify-content: space-between;
-    align-items: stretch; /* 자식 요소들을 컨테이너 높이에 맞춰 늘림 */
-    min-height: calc(100vh - 200px); /* 페이지 높이에서 헤더와 푸터 높이를 뺀 값 */
-    margin-bottom: 0; /* 하단 여백 제거 */
+    align-items: stretch;
+    min-height: calc(100vh - 200px);
+    
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .ceo-message-content {
@@ -91,8 +101,9 @@
     padding-right: 2rem;
     text-align: left;
     display: flex;
+    margin-top: 100px;
     flex-direction: column;
-    justify-content: flex-start; /* 컨텐츠를 상단에 정렬 */
+    justify-content: flex-start;
 }
 
     .ceo-message-content h3 {
@@ -104,26 +115,29 @@
     .ceo-message-content p {
         margin-bottom: 1rem;
         line-height: 1.6;
+        font-size: 13px;
+        color: #555555;
     }
 
 .ceo-signature {
-    margin-top: auto; /* 서명을 컨텐츠 영역의 하단으로 밀어냄 */
+    margin-top: 20px;
 
 }
 .ceo-title {
     font-weight: bold;
-    font-size: 1.2em; /* 기본 폰트 크기의 1.2배 */
+    font-size: 1.2em; 
 
-    margin-top: 0.5em; /* 위쪽 여백 추가 */
+    margin-top: 0.5em; 
 }
 
 .ceo-image-container {
     flex: 0 0 40%;
     max-width: 40%;
     order: 2;
-    display: flex;
+    display: flex; 
     flex-direction: column;
-    justify-content: flex-end; /* 이미지를 하단에 정렬 */
+    justify-content: flex-end; 
+    margin-top:100px;
 }
 
 .ceo-image {
@@ -148,5 +162,324 @@
         max-width: 100%;
         order: 1;
         margin-bottom: 1rem;
+    }
+}
+
+/*사업분야*/
+
+.business-areas {
+    max-width: 100%;
+    background-color: #F3F5F7;
+    padding-top: 30px; 
+    margin-top: -1px; 
+}
+
+    .business-areas h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 0 30px 30px; 
+    }
+
+.areas-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 30px; 
+}
+
+.area-item {
+    width: calc(33.333% - 20px); 
+    margin-bottom: 40px;
+}
+
+.area-image {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+    .area-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.area-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.area-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #D9DDDF;
+    margin-bottom: 15px;
+}
+
+.area-content {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+    .area-content ul.no-bullets {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+        .area-content ul.no-bullets li {
+            margin-bottom: 5px;
+        }
+
+@media (max-width: 768px) {
+    .area-item {
+        width: 100%;
+    }
+}
+/* 사업분야 하단 */
+.white-section {
+    background-color: white;
+    padding: 40px 0;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.section-image {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+    .section-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.box-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.rounded-box {
+    width: calc(25% - 20px);
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #D9DDDF;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+    .rounded-box p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+@media (max-width: 768px) {
+    .rounded-box {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .rounded-box {
+        width: 100%;
+    }
+}
+/* 회사연혁  */
+.company-history {
+    padding: 40px 0 0;
+    background-color: #F3F5F7;
+}
+
+    .company-history .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        margin: 30px;
+    } 
+
+.history-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.history-image {
+    width: 298px;
+    height: 416px;
+    object-fit: cover; 
+    display: block;
+}
+
+
+@media (max-width: 768px) {
+    .company-history {
+        padding: 30px 0 0;
+    }
+
+        .company-history .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+    .history-image {
+        width: 100%;
+        height: auto;
+        max-width: 298px;
+        max-height: 416px;
+    }
+}
+
+/* 조직도  */
+.organization-chart {
+padding: 40px 0 0;
+background-color: #F3F5F7;
+}
+
+    .organization-chart .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        margin: 30px;
+    }
+
+.organization-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.organization-image {
+    width: 644px;
+    height: 617px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 100px
+}
+
+
+@media (max-width: 768px) {
+    .organization-chart {
+        padding: 30px 0 0;
+    }
+
+        .organization-chart .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+    .organization-image {
+        width: 100%;
+        height: auto;
+        max-width: 298px;
+        max-height: 416px;
+    }
+}
+
+/* 오시는 길*/
+.location {
+    padding: 40px 0;
+    background-color: white;
+}
+
+    .location .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        margin: 30px;
+    }
+
+.location-item {
+    margin-bottom: 30px;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 1194px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+}
+
+    .map-container iframe {
+        width: 100%;
+        height: 320px;
+        border: 0;
+    }
+
+.address-container {
+    max-width: 1194px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px 0;
+}
+
+    .address-container h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .address-container p {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .address-container .label {
+        color: #318EC9;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+.location-separator {
+    max-width: 1194px;
+    margin: 0 auto 30px;
+    border-bottom: 1px solid #D9DDDF;
+}
+
+@media (max-width: 1200px) {
+    .map-container,
+    .address-container,
+    .location-separator {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .location .section-title {
+        font-size: 20px;
+    }
+
+    .map-container iframe {
+        height: 250px;
+    }
+
+    .address-container p {
+        font-size: 14px;
     }
 }

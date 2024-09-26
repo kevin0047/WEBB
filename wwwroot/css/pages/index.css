@@ -1,9 +1,11 @@
 ﻿/* index.css */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 
 body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 /* 홈 배경 이미지 */
 .hero-section {
@@ -11,7 +13,7 @@ body, html {
     padding: 0;
     background-color: transparent;
     position: relative;
-    height: calc(100vh - 200px);
+    height: 300px;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -20,6 +22,7 @@ body, html {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    margin-bottom: 350px;
 }
 
 /* */
@@ -30,19 +33,20 @@ body, html {
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
+    
 }
 /* Smart Sensor Technologies 메인 문구 */
 .hero-section h1 {
-    font-size: 2rem;
+    font-size: 48px;
     color: white;
-    margin-top: 27rem;
-    margin-bottom: 7rem;
-}
+    margin-top: 400px;
+    font-family: Pretendard;
 
-/* 배너 용 여백 */
-.white-section {
-    background-color: white;
-    padding: 200px 0;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+    outline: none; /* 포커스 방지용 아웃라인 제거 */
+
 }
 
 
@@ -56,7 +60,8 @@ body, html {
 
 /* 연한 푸른색 제품 영역 */
 .blue-section {
-    background-color: #e6f2ff;
+    background-color:#F3F5F7;
+    ;
     padding: 50px 0;
 }
 
@@ -111,7 +116,7 @@ body, html {
 
     .content-btn:hover,
     .content-btn.active {
-        background-color: #007bff;
+        background-color: #318EC9;
         color: white;
     }
 .content-images {
@@ -186,14 +191,14 @@ body, html {
         right: 20px;
         bottom: 1.8px;
         height: 2px;
-        background-color: #007bff;
+        background-color: #318EC9;
         transform: scaleX(0);
         transition: transform 0.3s ease;
     }
 
     .subcategory-btn:hover,
     .subcategory-btn.active {
-        color: #007bff;
+        color: #318EC9;
     }
 
         .subcategory-btn:hover::after,
@@ -219,10 +224,13 @@ body, html {
 .banner-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1200px; 
-    margin: 20px auto;
+    max-width: 1200px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px; 
+    box-sizing: border-box;
 }
-
 
 .banner-container {
     position: relative;
@@ -270,7 +278,8 @@ body, html {
     .banner-content p {
         font-size: 16px;
         margin-bottom: 50px;
-        text-align: left; 
+        text-align: left;
+        color: #555555;
     }
     /*배너 안 바로가기 버튼*/
 .banner-button {
@@ -278,16 +287,16 @@ body, html {
     align-items: center;
     padding: 10px 20px;
     background-color: white;
-    color: #007bff;
+    color: #318EC9;
     text-decoration: none;
-    border: 2px solid #007bff;
+    border: 2px solid #318EC9;
     border-radius: 25px;
     transition: all 0.3s;
     font-weight: bold;
 }
 
     .banner-button:hover {
-        background-color: #007bff;
+        background-color: #318EC9;
         color: white;
     }
 
@@ -348,7 +357,7 @@ body, html {
 }
 
     .banner-dot.active {
-        background: #007bff;
+        background: #318EC9;
     }
 
 
