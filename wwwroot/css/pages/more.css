@@ -8,40 +8,35 @@ body, html {
 .si-container {
     display: flex;
     justify-content: space-between;
-    padding: 0rem;
+    padding: 0 20px;
     max-width: 1300px;
-    margin-left: 20px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .si-content {
     flex: 1;
-    padding-right: 0rem;
-    padding-top : 1rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
 }
-
 .si-title {
-    font-weight: bold;
-
-    font-family: Pretendard;
-    font-size: 28px;
     font-weight: 600;
-    line-height: 28px;
-    text-align: left;
+    font-size: 28px;
+    line-height: 1.2;
     margin-bottom: 1rem;
 }
 
 .si-description {
-
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
-    line-height: 14px;
-    text-align: left;
+    line-height: 1.4;
     color: #999999;
 }
 
 .si-image {
-    flex: 0 0 500px;
+    flex: 0 0 40%;
+    max-width: 500px;
 }
 
     .si-image img {
@@ -63,7 +58,9 @@ body, html {
         padding: 0;
         margin: 0;
         display: flex;
-        justify-content: left;
+        justify-content: flex-start;
+        max-width: 1300px;
+        margin: 0 auto;
     }
 
         .si-menu-bar nav ul li {
@@ -93,16 +90,30 @@ body, html {
 /*서브 카테고리*/
 .subcategories {
     display: flex;
-    justify-content: left;
+    justify-content: center; 
+    flex-wrap: wrap;
     margin-bottom: 20px;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
 }
-
+.subcategories-container {
+    display: flex;
+    justify-content: flex-start; 
+    flex-wrap: wrap;
+    max-width: 1300px; 
+    width: 100%;
+    margin: 0 auto; /* 중앙 정렬 */
+   
+    box-sizing: border-box;
+    position: relative;
+}
     .subcategories::before,
     .subcategories::after {
         content: '';
         position: absolute;
-        left: 0;
+        left: 0; 
         right: 0;
         height: 1px;
         background-color: #ccc;
@@ -120,16 +131,21 @@ body, html {
     background: none;
     border: none;
     color: #888;
-    padding: 10px 20px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
+    
 }
 
     .subcategory-btn::after {
         content: '';
         position: absolute;
-        left: 20px;
+        left: 15px; 
         right: 20px;
         bottom: 1.8px;
         height: 2px;
@@ -147,11 +163,25 @@ body, html {
         .subcategory-btn.active::after {
             transform: scaleX(1);
         }
+@media (max-width: 768px) {
+    .subcategories {
+        justify-content: flex-start;
+        padding: 0 15px;
+    }
+
+    .subcategory-btn {
+        padding: 10px 10px; 
+        font-size: 14px;
+        max-width: none; 
+        flex: 1 0 auto;
+    }
+}
 
 /*컨텐츠*/
 .si-content-section {
-    margin-top: 2rem;
-    padding: 20px ;
+    max-width: 1300px;
+    margin: 2rem auto 0;
+    padding: 0 20px;
 }
 
 .si-subcategory-title {
@@ -163,20 +193,24 @@ body, html {
 .si-product-item {
     display: flex;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .si-product-image {
-    flex: 0 0 400px;
+    flex: 0 0 40%;
+    max-width: 400px;
     margin-right: 1rem;
 }
 
     .si-product-image img {
         width: 100%;
         height: auto;
+        
     }
 
 .si-product-details {
     flex: 1;
+    min-width: 300px;
 }
 
 .si-product-title {
@@ -262,9 +296,8 @@ body, html {
 .si-product-divider {
     border: none;
     border-top: 1px solid #e0e0e0;
-    margin-bottom: 40px;
-    padding: 20px 0;
-    max-width: 1200px;
+    margin: 40px 0;
+    width: 100%;
 }
 
 /*디테일 페이지*/
@@ -357,5 +390,21 @@ body, html {
 
     .si-image {
         flex: 0 0 auto;
+        max-width: 100%;
+    }
+
+    .si-product-item {
+        flex-direction: column;
+    }
+
+    .si-product-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .si-product-details {
+        flex: 1;
     }
 }

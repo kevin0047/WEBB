@@ -38,13 +38,15 @@
 </div>
 
 <div class="subcategories">
-    @foreach (var subCategory in SubMenuItems)
-    {
-        <button class="subcategory-btn @(ActiveSubCategory == subCategory ? "active" : "")"
-                @onclick="() => SetActiveSubCategory(subCategory)">
-            @subCategory
-        </button>
-    }
+    <div class="subcategories-container">
+        @foreach (var subCategory in SubMenuItems)
+        {
+                <button class="subcategory-btn @(ActiveSubCategory == subCategory ? "active" : "")"
+                        @onclick="() => SetActiveSubCategory(subCategory)">
+                @subCategory
+                </button>
+        }
+    </div>
 </div>
 
 <div class="si-content-section">
