@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using MongoDB.Driver;
 using WEBB.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+// Configure MongoDB
+var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDb");
+var mongoClient = new MongoClient(mongoConnectionString);
+var database = mongoClient.GetDatabase(builder.Configuration["DatabaseSettings:DatabaseName"]);
+builder.Services.AddSingleton(database);
+
 builder.Services.AddSingleton<ProductService>();
 
 var app = builder.Build();

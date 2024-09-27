@@ -72,9 +72,9 @@
 @code {
     private Product newProduct = new Product();
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
-        ProductService.AddProduct(newProduct);
+        await ProductService.AddProduct(newProduct);
         NavigationManager.NavigateTo("/");
     }
 }

@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.29.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="wwwroot\images\pdf-icon.png" />
     <Resource Include="wwwroot\images\systemIntegration-top.png" />
   </ItemGroup>
