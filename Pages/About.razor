@@ -258,11 +258,17 @@
             <div class="chart-container">
                 <div class="outer-circle"></div>
                 <div class="center-background"></div>
-                <div class="center"></div>
+                <div class="center">
+                            <div class="center-image">
+                    <img src="/images/center-logo.png" alt="center-logo" />
+        </div>
+                        <h2>CEO</h2>
+
+                </div>
                 @foreach (var circle in smallCircles)
                 {
                         <div class="small-circle" style="@circle.Style">
-                        @circle.Content
+                        @((MarkupString)circle.Content)
                         </div>
                 }
             </div>
@@ -342,12 +348,11 @@
     }
     private List<(string Content, string Style)> smallCircles = new List<(string, string)>
     {
-        ("경영지원", "top: -5px; left: 50%; transform: translate(-50%, -50%);"),
-        ("기술연구소", "top: 50%; right: -80px; transform: translate(50%, -50%);"),
-        ("기획본부", "bottom: -80px; left: 50%; transform: translate(-50%, 50%);"),
-        ("신사업본부", "top: 50%; left: -80px; transform: translate(-50%, -50%);"),
-        ("영업본부", "top: 20%; left: 20%;")
+        ("<div>경영<br>지원부</div>", "top: 6%; left: 50%; transform: translate(-50%, -50%);"),
+        ("영업부", "top: 38%; right:-6%; transform: translate(0, -50%);"),
+        ("<div>CS<br>엔지니어부</div>", "bottom: 12%; right: 23%; transform: translate(50%, 50%);"),
+        ("소프트웨어부", "bottom: 12%; left: 23%; transform: translate(-50%, 50%);"),
+        ("계획설계부", "top: 38%; left: -6%; transform: translate(0, -50%);")
     };
-
 
 }
