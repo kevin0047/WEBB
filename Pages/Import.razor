@@ -1,0 +1,80 @@
+﻿@page "/i"
+@inject ProductService ProductService
+@inject NavigationManager NavigationManager
+@using WEBB.Data;
+@using WEBB.Models;
+<h3>Import New Product</h3>
+
+<EditForm Model="@newProduct" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="imageUrl">Image URL:</label>
+        <InputText id="imageUrl" @bind-Value="newProduct.ImageUrl" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <InputText id="title" @bind-Value="newProduct.Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <InputTextArea id="content" @bind-Value="newProduct.Content" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <InputSelect id="category" @bind-Value="newProduct.Category" class="form-control">
+            <option value="">Select Category</option>
+            <option value="S/I">S/I</option>
+            <option value="Components">Components</option>
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label for="subCategory">Sub Category:</label>
+        <InputSelect id="subCategory" @bind-Value="newProduct.SubCategory" class="form-control">
+            <option value="">Select Sub Category</option>
+            @if (newProduct.Category == "S/I")
+            {
+                    <option value="MachineVision">Machine Vision</option>
+                    <option value="AutomaticControl">Automatic Control</option>
+            }
+            else if (newProduct.Category == "Components")
+            {
+                    <option value="MachineVision">Machine Vision</option>
+                    <option value="Sensors">Sensors</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label for="subSubCategory">Sub Sub Category:</label>
+        <InputSelect id="subSubCategory" @bind-Value="newProduct.SubSubCategory" class="form-control">
+            <option value="">Select Sub Sub Category</option>
+            @if (newProduct.SubCategory == "MachineVision" || newProduct.SubCategory == "Sensors")
+            {
+                    <option value="3D Camera">3D Camera</option>
+                    <option value="2D Camera">2D Camera</option>
+                    <option value="Confocal">Confocal</option>
+                    <option value="Line scan">Line scan</option>
+                    <option value="Lens">Lens</option>
+                    <option value="LightsLancard">LightsLancard</option>
+            }
+        </InputSelect>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+    private Product newProduct = new Product();
+
+    private void HandleValidSubmit()
+    {
+        ProductService.AddProduct(newProduct);
+        NavigationManager.NavigateTo("/");
+    }
+}

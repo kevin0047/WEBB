@@ -12,9 +12,9 @@ namespace WEBB.Data
         {
             _products = new List<Product>
             {
-                new Product { Id = 1, ImageUrl = "/images/movie1.png", Title = "Machine Vision Title 1", Content = "Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1", Category = "S/I", SubCategory = "MachineVision" },
-                new Product { Id = 2, ImageUrl = "/images/movie2.png", Title = "Machine Vision Title 2", Content = "Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2", Category = "S/I", SubCategory = "MachineVision" },
-                new Product { Id = 3, ImageUrl = "/images/movie3.png", Title = "Machine Vision Title 3", Content = "Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3", Category = "S/I", SubCategory = "MachineVision" },
+                new Product { Id = 1, ImageUrl = "/images/movie1.png", Title = "Machine Vision Title 1", Content = "Machine Vision Content 1e Vent 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1Machine Vision Content 1", Category = "S/I", SubCategory = "MachineVision" },
+                new Product { Id = 2, ImageUrl = "/images/movie2.png", Title = "Machine Vision Title 2", Content = "Machine Vision Contentne Vision Content 22Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2Machine Vision Content 2", Category = "S/I", SubCategory = "MachineVision" },
+                new Product { Id = 3, ImageUrl = "/images/movie3.png", Title = "Machine Vision Title 3", Content = "Machine Vision Content 3Machi ontent 3Machine Vision Content 3Machine Vision Content 3Machine Vision Content 3", Category = "S/I", SubCategory = "MachineVision" },
                 new Product { Id = 4, ImageUrl = "/images/movie4.png", Title = "Automatic Control Title 1", Content = "Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1Automatic Control Content 1", Category = "S/I", SubCategory = "AutomaticControl" },
                 new Product { Id = 5, ImageUrl = "/images/movie5.png", Title = "Automatic Control Title 2", Content = "Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2Automatic Control Content 2", Category = "S/I", SubCategory = "AutomaticControl" },
                 new Product { Id = 6, ImageUrl = "/images/movie1.png", Title = "Automatic Control Title 3", Content = "Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3Automatic Control Content 3", Category = "S/I", SubCategory = "AutomaticControl" },
@@ -52,6 +52,11 @@ namespace WEBB.Data
         {
             await Task.Delay(100);
             return _products.FirstOrDefault(p => p.Id == id);
+        }
+        public void AddProduct(Product product)
+        {
+            product.Id = _products.Max(p => p.Id) + 1; // Generate new ID
+            _products.Add(product);
         }
     }
 }
