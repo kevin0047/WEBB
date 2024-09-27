@@ -72,17 +72,18 @@
             color: #fff;
         }
 
-@("@media (max-width: 768px) {") .footer-content {
+@media screen and (max-width: 768px) 
+.footer-content {
     flex-direction: column;
 }
 
-.footer-section {
-    margin-bottom: 2rem;
+.footer-section { 
+    margin-bottom: 400rem;
 }
 
 }
 
 .footer-logo {
-    width: 150px; /* 원하는 너비로 조정 */
-    height: auto; /* 비율 유지 */
+    width: 150px; 
+    height: auto; 
 }
