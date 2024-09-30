@@ -142,7 +142,7 @@ body, html {
     max-width: 200px;
     
 }
-
+/*버튼 아래 선 효과*/
     .subcategory-btn::after {
         content: '';
         position: absolute;
@@ -176,6 +176,7 @@ body, html {
         max-width: none; 
         flex: 1 0 auto;
     }
+
 }
 
 /*컨텐츠*/
@@ -402,6 +403,57 @@ border-color: #D9DDDF;
         max-width: 100%;
         display: none;
     }
+    /* 모바일 서브 카테고리 메뉴 스타일 수정 */
+    .subcategories {
+        padding: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .subcategories-container {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        padding: 10px 0;
+    }
+
+    .subcategory-btn {
+        flex: 0 0 auto;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+        .subcategory-btn::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            right: 20px;
+            bottom: -1px;
+            height: 2px;
+            background-color: #318EC9;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .subcategory-btn:hover,
+        .subcategory-btn.active {
+            color: #318EC9;
+        }
+
+            .subcategory-btn:hover::after,
+            .subcategory-btn.active::after {
+                transform: scaleX(1);
+            }
+    .subcategories::before,
+    .subcategories::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        bottom: 8px;
+        background-color: #ccc;
+    }
+
 
     .si-product-item {
         flex-direction: column;
