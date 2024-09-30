@@ -26,6 +26,7 @@ body, html {
     line-height: 28px;
     text-align: left;
     margin-bottom: 1rem;
+    outline: none;
 }
 
 .si-description {
