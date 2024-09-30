@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+
 <div class="main-layout">
     <header>
         <nav class="navbar">
@@ -9,14 +10,19 @@
                         <img src="/images/logo.png" alt="회사 로고" class="logo">
                     </a>
                 </div>
-                <div class="navbar-menu">
-                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("systemIntegration").ToString()">
+                <button class="hamburger @(_isMenuOpen ? "is-active" : "")" @onclick="ToggleMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="navbar-menu @(_isMenuOpen ? "is-active" : "")">
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("systemIntegration").ToString()" @onclick="CloseMenu">
                         System Integration
                     </NavLink>
-                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("components").ToString()">
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("components").ToString()" @onclick="CloseMenu">
                         Components
                     </NavLink>
-                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()">
+                    <NavLink class="nav-link" href="@NavigationManager.ToAbsoluteUri("about").ToString()" @onclick="CloseMenu">
                         About
                     </NavLink>
                 </div>
@@ -27,8 +33,28 @@
         @Body
     </main>
     <Footer />
+    @if (_isMenuOpen)
+    {
+            <div class="overlay" @onclick="ToggleMenu"></div>
+    }
 </div>
+
+@code {
+    private bool _isMenuOpen = false;
+
+    private void ToggleMenu()
+    {
+        _isMenuOpen = !_isMenuOpen;
+    }
+
+    private void CloseMenu()
+    {
+        _isMenuOpen = false;
+    }
+}
+
 <style>
+    /* 기존 스타일 유지 */
     .main-layout {
         display: flex;
         flex-direction: column;
@@ -50,7 +76,7 @@
         justify-content: space-between;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0.4rem 2rem; 
+        padding: 0.4rem 1rem; 
         width: 100%;
     }
     .navbar-brand {
@@ -107,23 +133,95 @@
         margin: 0 auto;
         width: 100%;
     }
+    .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+    }
+    .hamburger span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
     @("@media (max-width: 768px) {")
+        .navbar {
+            border-bottom: 1px solid #D9DDDF;
+        }
         .navbar-container {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0.4rem 0; 
+        }
+        .navbar-brand {
+            flex: 0 0 auto;
+            padding-left: 1rem; 
         }
         .navbar-menu {
+            display: none;
             flex-direction: column;
-            align-items: flex-start;
             width: 100%;
-            margin-top: 1rem;
+            padding: 0;
+            order: 3;
+            border-top: 1px solid #D9DDDF;
+        }
+        .navbar-menu.is-active {
+            display: flex;
         }
         .nav-link {
-            margin: 0.5rem 0;
+            margin: 0;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #D9DDDF;
+            width: 100%;
+            margin-left: 1rem;
         }
-        .nav-link::after {
-            bottom: -8px;
+        .nav-link:last-child {
+            border-bottom: none;
+        }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 40px;
+            padding: 0;
+        }
+        .hamburger.is-active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px,7px);
+        }
+        .hamburger.is-active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.is-active span:nth-child(3) {
+            transform: rotate(-45deg) translate(11px, -11px);
+        }
+        .overlay {
+            display: block;
+        }
+        /* 모바일에서 액티브 효과 제거 */
+        .nav-link:hover,
+        .nav-link.active {
+            color: inherit;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 0;
         }
     }
 </style>
