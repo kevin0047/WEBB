@@ -348,7 +348,13 @@ body, html {
     background-color: white;
 }
 .rectangle {
-    border: 1px solid #e0e0e0;
+    border: 1px solid ;
+
+
+
+border-color: #D9DDDF;
+
+
     height: 80px;
     display: flex;
     align-items: center;
@@ -393,6 +399,7 @@ body, html {
     .si-image {
         flex: 0 0 auto;
         max-width: 100%;
+        display: none;
     }
 
     .si-product-item {
@@ -408,5 +415,47 @@ body, html {
 
     .si-product-details {
         flex: 1;
+    }
+    /*모바일 제원표 이미지*/
+    .com-spec-section {
+        padding: 20px; 
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .com-spec-image {
+        padding: 0; 
+        justify-content: flex-start; 
+    }
+
+        .com-spec-image img {
+            max-width: none; 
+            width: auto; 
+            height: auto; 
+        }
+
+    /*모바일 디테일 페이지의 다운로드*/
+
+    .rectangle-grid {
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+
+    }
+
+    .rectangle {
+        height: 100px; 
+        padding: 10px; 
+        border: 2px solid;
+        border-color: #D9DDDF;
+    }
+
+    .file-name {
+        font-size: 20px; 
+    }
+
+    .download-btn {
+
+        padding: 12px 16px; 
+        font-size: 15px;
     }
 }
