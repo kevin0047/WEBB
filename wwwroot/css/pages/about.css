@@ -394,21 +394,22 @@ body, html {
 }
 
 
-
+/*조직도*/
 .organization-chart {
         padding: 40px 0 80px;
         background-color: #F3F5F7;
     }
 
-        .organization-chart .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            text-align: left;
-            max-width: 1300px;
-            margin: 0 auto 30px;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
+    .organization-chart .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        max-width: 1300px;
+        margin: 0 auto 30px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        margin-bottom:80px;
+    }
 
 .chart-container {
     position: relative;
