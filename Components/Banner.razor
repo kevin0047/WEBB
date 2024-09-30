@@ -7,7 +7,9 @@
             @foreach (var slide in Slides)
             {
                     <div class="banner-slide">
-                        <div class="banner-image" style="background-image: url('@slide.ImageUrl')"></div>
+                        <div class="banner-image">
+                                <img src="@slide.ImageUrl" alt="Banner Image" />
+                        </div>
                         <div class="banner-content">
                             <h2>@((MarkupString)slide.Title)</h2>
                             <p>@((MarkupString)slide.Description)</p>
