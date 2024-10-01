@@ -16,14 +16,14 @@ namespace WEBB.Data
             _products = database.GetCollection<Product>(configuration["DatabaseSettings:ProductsCollectionName"]);
         }
 
-        public List<Product> GetTopProducts(string category, string subCategory, string subSubCategory, int count = 3)
+        public List<Product> GetTopProducts(string category, string subCategory, string subSubCategory)
         {
             return _products.Find(p =>
                 p.Category == category &&
                 p.SubCategory == subCategory &&
                 p.SubSubCategory == subSubCategory)
                 .SortBy(p => p.Id)
-                .Limit(count)
+                
                 .ToList();
         }
 
