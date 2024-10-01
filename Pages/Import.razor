@@ -1,8 +1,11 @@
 ﻿@page "/i"
 @inject ProductService ProductService
 @inject NavigationManager NavigationManager
-@using WEBB.Data;
-@using WEBB.Models;
+@inject IWebHostEnvironment Environment
+@using WEBB.Data
+@using WEBB.Models
+@using System.IO
+
 <h3>Import New Product</h3>
 
 <EditForm Model="@newProduct" OnValidSubmit="@HandleValidSubmit">
@@ -10,32 +13,35 @@
     <ValidationSummary />
 
     <div class="form-group">
-        <label for="imageUrl">Image URL:</label>
-        <InputText id="imageUrl" @bind-Value="newProduct.ImageUrl" class="form-control" />
+        <label for="imageUpload">Image Upload:</label>
+        <InputFile OnChange="@HandleFileSelected" accept=".jpg,.jpeg,.png,.gif" />
     </div>
+    @if (!string.IsNullOrEmpty(newProduct.ImageUrl))
+    {
+            <div class="form-group">
+                <img src="@newProduct.ImageUrl" alt="Preview" style="max-width: 200px; max-height: 200px;" />
+            </div>
+    }
 
     <div class="form-group">
         <label for="title">Title:</label>
         <InputText id="title" @bind-Value="newProduct.Title" class="form-control" />
     </div>
-
     <div class="form-group">
         <label for="content">Content:</label>
         <InputTextArea id="content" @bind-Value="newProduct.Content" class="form-control" />
     </div>
-
     <div class="form-group">
         <label for="category">Category:</label>
-        <InputSelect id="category" @bind-Value="newProduct.Category" class="form-control">
+        <InputSelect id="category" @bind-Value="newProduct.Category" @onchange="OnCategoryChanged" class="form-control">
             <option value="">Select Category</option>
             <option value="S/I">S/I</option>
             <option value="Components">Components</option>
         </InputSelect>
     </div>
-
     <div class="form-group">
         <label for="subCategory">Sub Category:</label>
-        <InputSelect id="subCategory" @bind-Value="newProduct.SubCategory" class="form-control">
+        <InputSelect id="subCategory" @bind-Value="newProduct.SubCategory" @onchange="OnSubCategoryChanged" class="form-control">
             <option value="">Select Sub Category</option>
             @if (newProduct.Category == "S/I")
             {
@@ -49,12 +55,11 @@
             }
         </InputSelect>
     </div>
-
     <div class="form-group">
         <label for="subSubCategory">Sub Sub Category:</label>
         <InputSelect id="subSubCategory" @bind-Value="newProduct.SubSubCategory" class="form-control">
             <option value="">Select Sub Sub Category</option>
-            @if (newProduct.SubCategory == "MachineVision" || newProduct.SubCategory == "Sensors")
+            @if (newProduct.Category == "Components" && (newProduct.SubCategory == "MachineVision" || newProduct.SubCategory == "Sensors"))
             {
                     <option value="3D Camera">3D Camera</option>
                     <option value="2D Camera">2D Camera</option>
@@ -65,16 +70,63 @@
             }
         </InputSelect>
     </div>
-
     <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
 
 @code {
     private Product newProduct = new Product();
+    private IBrowserFile uploadedFile;
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        uploadedFile = e.File;
+        if (uploadedFile != null)
+        {
+            var fileName = Path.GetRandomFileName() + Path.GetExtension(uploadedFile.Name);
+            var uploadsFolder = Path.Combine(Environment.ContentRootPath, "uploads");
+
+            // uploads 폴더가 없으면 생성
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            await using FileStream fs = new(filePath, FileMode.Create);
+            await uploadedFile.OpenReadStream().CopyToAsync(fs);
+
+            // ImageUrl을 상대 경로로 설정
+            newProduct.ImageUrl = $"/uploads/{fileName}";
+            StateHasChanged();
+        }
+    }
 
     private async Task HandleValidSubmit()
     {
+        if (uploadedFile != null)
+        {
+            if (string.IsNullOrEmpty(newProduct.ImageUrl))
+            {
+                // 에러 처리
+                return;
+            }
+        }
+
         await ProductService.AddProduct(newProduct);
         NavigationManager.NavigateTo("/");
+    }
+
+    private void OnCategoryChanged(ChangeEventArgs e)
+    {
+        newProduct.Category = e.Value.ToString();
+        newProduct.SubCategory = string.Empty;
+        newProduct.SubSubCategory = string.Empty;
+    }
+
+    private void OnSubCategoryChanged(ChangeEventArgs e)
+    {
+        newProduct.SubCategory = e.Value.ToString();
+        newProduct.SubSubCategory = string.Empty;
     }
 }

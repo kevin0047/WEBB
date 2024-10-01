@@ -282,9 +282,10 @@ body, html {
 }
 
     .content-item img {
-        width: 100%;
-        height: auto;
-
+        width: 378px;
+        height: 212px;
+        object-fit: cover;
+        object-position: center;
         margin-bottom: 5px;
     }
 

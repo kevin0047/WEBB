@@ -205,9 +205,10 @@ body, html {
 }
 
     .si-product-image img {
-        width: 100%;
-        height: auto;
-        
+        width: 582px;
+        height: 326px;
+        object-fit: cover;
+        object-position: center;
     }
 
 .si-product-details {
@@ -245,7 +246,11 @@ body, html {
 }
 
 .si-product-image {
-    flex: 0 0 500px;
+    width: 582px;
+    height: 326px;
+    object-fit: cover;
+    object-position: center;
+
     margin-bottom: 3rem;
 }
 

@@ -19,7 +19,9 @@
     <Content Remove="wwwroot\images\pdf-icon.png" />
     <Content Remove="wwwroot\images\systemIntegration-top.png" />
   </ItemGroup>
-
+	<ItemGroup>
+		<Folder Include="uploads\" />
+	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.29.0" />
   </ItemGroup>
