@@ -512,16 +512,34 @@ body, html {
             align-self: flex-end;
         }
 
-        /* Business Areas */
+        /* 사업분야 */
+        .box-container {
+            display: block;
+        }
         .area-item {
             width: 100%;
         }
 
         .rounded-box {
-            width: calc(50% - 10px);
+            width: 100%;
+            padding: 0;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 0;
         }
+            .rounded-box p {
+                position: relative;
+                padding-left: 15px;
+                line-height: 1.6;
+            }
+                .rounded-box p::before {
+                    content: "•";
+                    position: absolute;
+                    left: 0;
+                    color: #333; /* 점의 색상을 원하는 대로 조정하세요 */
+                }
 
-        /* Organization Chart */
+        /* 조직도 */
         .chart-container {
             width: 100%;
             height: auto;
@@ -539,7 +557,7 @@ body, html {
             font-size: 12px;
         }
 
-        /* Location */
+        /* 오시는 길 */
         .location .section-title {
             font-size: 20px;
         }
