@@ -466,27 +466,33 @@ body, html {
    
 
     @media (max-width: 768px) {
-        .si-image {
-            flex: 0 0 auto;
-            max-width: 100%;
-            display: none;
-        }
-        .si-description {
-margin-bottom: 3rem;
-        }
+        /* Menu Bar */
         .si-menu-bar {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
             .si-menu-bar nav ul {
-                display: inline-flex; 
-                width: max-content; 
+                display: inline-flex;
+                width: max-content;
             }
 
                 .si-menu-bar nav ul li {
-                    flex-shrink: 0; 
+                    flex-shrink: 0;
                 }
+
+        /* Main Content */
+        .si-image {
+            flex: 0 0 auto;
+            max-width: 100%;
+            display: none;
+        }
+
+        .si-description {
+            margin-bottom: 3rem;
+        }
+
+        /* CEO Message */
         .ceo-message-container {
             flex-direction: column;
         }
@@ -494,23 +500,37 @@ margin-bottom: 3rem;
         .ceo-message-content {
             padding-right: 0;
             margin-bottom: 1rem;
-            order: 2;
+            order: 1;
         }
 
         .ceo-image-container {
             flex: 0 0 100%;
-            max-width: 100%;
-            order: 1;
-            margin-bottom: 1rem;
+            max-width: 70%;
+            order: 2;
+            margin-top: auto;
+            margin-bottom: -2.5rem;
+            align-self: flex-end;
         }
-        .outer-circle {
-            width: 90%;
-            height: 90%;
+
+        /* Business Areas */
+        .area-item {
+            width: 100%;
         }
+
+        .rounded-box {
+            width: calc(50% - 10px);
+        }
+
+        /* Organization Chart */
         .chart-container {
             width: 100%;
             height: auto;
             padding-bottom: 100%;
+        }
+
+        .outer-circle {
+            width: 90%;
+            height: 90%;
         }
 
         .small-circle {
@@ -519,6 +539,7 @@ margin-bottom: 3rem;
             font-size: 12px;
         }
 
+        /* Location */
         .location .section-title {
             font-size: 20px;
         }
@@ -529,75 +550,6 @@ margin-bottom: 3rem;
 
         .address-container p {
             font-size: 14px;
-        }
-        /* 오시는 길 */
-        .location {
-            padding: 40px 0;
-            background-color: white;
-        }
-
-            .location .section-title {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: left;
-                max-width: 1300px;
-                margin: 0 auto 30px;
-                padding: 0 20px;
-                box-sizing: border-box;
-            }
-
-        .location-item {
-            margin-bottom: 30px;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .map-container {
-            width: 100%;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-            .map-container iframe {
-                width: 100%;
-                height: 320px;
-                border: 0;
-            }
-
-        .address-container {
-            text-align: left;
-            padding: 20px 0;
-        }
-
-            .address-container h3 {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 10px;
-            }
-
-            .address-container p {
-                font-size: 16px;
-                margin-bottom: 5px;
-            }
-
-            .address-container .label {
-                color: #318EC9;
-                font-weight: bold;
-                margin-right: 10px;
-            }
-
-        .location-separator {
-            max-width: 1300px;
-            margin: 0 auto 30px;
-            border-bottom: 1px solid #D9DDDF;
-        }
-
-            .rounded-box {
-                width: calc(50% - 10px);
-            }
-        .area-item {
-            width: 100%;
         }
     }
 
