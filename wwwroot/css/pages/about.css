@@ -538,37 +538,78 @@ body, html {
                     left: 0;
                     color: #333; /* 점의 색상을 원하는 대로 조정하세요 */
                 }
+                /*회사 연혁*/
 
-        /* 조직도 */
-        .chart-container {
-            width: 100%;
-            height: auto;
-            padding-bottom: 100%;
+        .company-history .section-title {
+            font-size: 28px;
+
         }
 
-        .outer-circle {
-            width: 90%;
-            height: 90%;
+
+        .timeline::before {
+            left: 30%;
+            top: 10px;
+            height: calc(100% - 10px); /* 전체 높이에서 상하 여백을 뺌 */
+      
         }
 
-        .small-circle {
-            width: 80px;
-            height: 80px;
-            font-size: 12px;
+
+
+
+    
+    
+        .timeline-item {
+
+            left: -40%;
+                   
         }
 
-        /* 오시는 길 */
-        .location .section-title {
-            font-size: 20px;
+        .timeline-year {
+
+            font-size:24px;
         }
 
-        .map-container iframe {
-            height: 250px;
-        }
-
-        .address-container p {
+        .timeline-content {
             font-size: 14px;
         }
-    }
+
+        .timeline-month {
+            font-size: 16px;
+            margin-right:10px;
+        }
+           
+
+
+            /* 조직도 */
+            .chart-container {
+                width: 100%;
+                height: auto;
+                padding-bottom: 100%;
+            }
+
+            .outer-circle {
+                width: 90%;
+                height: 90%;
+            }
+
+            .small-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 12px;
+            }
+
+            /* 오시는 길 */
+            .location .section-title {
+                font-size: 20px;
+            }
+
+            .map-container iframe {
+                height: 250px;
+            }
+
+            .address-container p {
+                font-size: 14px;
+            }
+        }
 
 
