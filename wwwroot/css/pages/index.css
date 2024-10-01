@@ -277,7 +277,7 @@ body, html {
 
 .content-item {
     flex: 0 0 auto;
-    width: 200px;
+    width: 378px;
     text-align: left;
 }
 
@@ -289,12 +289,12 @@ body, html {
     }
 
     .content-item h3 {
-        font-size: 15px;
+        font-size: 18px;
         margin-bottom: 5px;
     }
 
     .content-item p {
-        font-size: 10px;
+        font-size: 16px;
         color: #666;
     }
 /*서브 카테고리*/
@@ -311,7 +311,7 @@ body, html {
         position: absolute;
         left: 0;
         right: 0;
-        height: 1px;
+        height: 0.5px;
         background-color: #ccc;
     }
 

@@ -121,16 +121,11 @@ body, html {
     min-width: 300px;
 }
 
-    .ceo-message-content h3 {
-        margin-bottom: 1rem;
-        font-size: 28px;
-        color: #333;
-    }
 
     .ceo-message-content p {
         margin-bottom: 1rem;
         line-height: 1.6;
-        font-size: 13px;
+        font-size: 16px;
         color: #555555;
     }
 
@@ -146,12 +141,13 @@ body, html {
 
 .ceo-image-container {
     flex: 0 0 40%;
-    max-width: 40%;
+    max-width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     margin-top: 30px;
     margin-bottom:-40px;
+
 }
 
 .ceo-image {
