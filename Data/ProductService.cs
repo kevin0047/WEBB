@@ -22,8 +22,8 @@ namespace WEBB.Data
                 p.Category == category &&
                 p.SubCategory == subCategory &&
                 p.SubSubCategory == subSubCategory)
-                .SortBy(p => p.Id)
-                
+                .SortByDescending(p => p.Id)
+
                 .ToList();
         }
 
@@ -32,7 +32,7 @@ namespace WEBB.Data
             return _products.Find(p =>
                 p.Category == category &&
                 p.SubCategory == subCategory)
-                .SortBy(p => p.Id)
+               .SortByDescending(p => p.Id)
                 .ToList();
         }
 
