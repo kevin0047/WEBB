@@ -462,7 +462,76 @@ body, html {
     font-size: 20px;
     text-align: center;
 }
+/* 오시는 길 */
+.location {
+    padding: 40px 0;
+    background-color: white;
+}
 
+    .location .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        max-width: 1300px;
+        margin: 0 auto 30px;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+.location-item {
+    margin-bottom: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.map-container {
+    width: 100%;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+    .map-container iframe {
+        width: 100%;
+        height: 320px;
+        border: 0;
+    }
+
+.address-container {
+    text-align: left;
+    padding: 20px 0;
+}
+
+    .address-container h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .address-container p {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .address-container .label {
+        color: #318EC9;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+.location-separator {
+    max-width: 1300px;
+    margin: 0 auto 30px;
+    border-bottom: 1px solid #D9DDDF;
+}
+
+.rounded-box {
+    width: calc(50% - 10px);
+}
+
+.area-item {
+    width: 100%;
+}
    
 
     @media (max-width: 768px) {
@@ -536,7 +605,7 @@ body, html {
                     content: "•";
                     position: absolute;
                     left: 0;
-                    color: #333; /* 점의 색상을 원하는 대로 조정하세요 */
+                    color: #333; 
                 }
                 /*회사 연혁*/
 
@@ -545,19 +614,13 @@ body, html {
 
         }
 
-
         .timeline::before {
             left: 30%;
             top: 10px;
-            height: calc(100% - 10px); /* 전체 높이에서 상하 여백을 뺌 */
+            height: calc(100% - 10px); 
       
         }
 
-
-
-
-    
-    
         .timeline-item {
 
             left: -40%;
@@ -581,35 +644,68 @@ body, html {
 
 
             /* 조직도 */
-            .chart-container {
-                width: 100%;
-                height: auto;
-                padding-bottom: 100%;
-            }
+        .chart-container {
+            width: 345px; 
+            height: 345px; 
+            transform: scale(1); 
+            margin-top: -30px;
+        }
 
-            .outer-circle {
-                width: 90%;
-                height: 90%;
-            }
+        .outer-circle {
+            width: 307px; 
+            height: 307px; 
+        }
 
-            .small-circle {
-                width: 80px;
-                height: 80px;
-                font-size: 12px;
-            }
+        .center-background {
+            width: 140px; 
+            height: 140px; 
+        }
+
+        .center {
+            width: 120px; 
+            height: 120px; 
+        }
+
+        .center-image {
+            width: 85px;
+            height: 15px; 
+            margin-bottom: 6px;
+        }
+
+        .center h2 {
+            font-size: 14px; 
+        }
+
+        .small-circle {
+            width: 80px;
+            height: 80px;
+            border-width: 5px; 
+            font-size: 11px; 
+        }
+        
 
             /* 오시는 길 */
             .location .section-title {
-                font-size: 20px;
+                font-size: 28px;
+                margin-bottom:40px;
             }
 
             .map-container iframe {
                 height: 250px;
             }
-
+        .address-container h3 {
+            font-size: 20px;
+            margin-top:-30px;
+            margin-bottom: 10px;
+        }
             .address-container p {
-                font-size: 14px;
+                font-size: 16px;
             }
+        .location-separator {
+            max-width: 100%;
+            margin: 30px;
+
+        }
         }
 
 
